@@ -15,14 +15,14 @@ public class Patient {
     private String age;
     //是否糖尿病
     private String isDiabetes;
-    private String diaTime;
+    private String diaAge;
     private String highBlood;
     //血脂异常
     private String boolFat;
     private String opraType;
     private String reverseOpra;
     private String isFirstOpra;
-    private String optaTime;
+    private String opraTime;
     //住院号
     private String InhosptialNo;
 
