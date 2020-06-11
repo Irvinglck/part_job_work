@@ -1,6 +1,8 @@
 package com.lck.controllor;
 
 import com.lck.model.Patient;
+import com.lck.repository.PatientRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -10,17 +12,22 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.jws.WebParam;
+import javax.persistence.Access;
 import java.util.ArrayList;
 import java.util.List;
 
 @Controller
+@RequestMapping("/patient")
 public class PatientContrllor {
+
+    @Autowired
+    private PatientRepository patientRepository;
 
     //患者列表页面
     @GetMapping("/patients")
     public String login( Model model
     ) {
-        model.addAttribute("patients",mockData());
+        model.addAttribute("patients",patientRepository.findAll());
         return "/patients/list";
     }
     //上传文件
