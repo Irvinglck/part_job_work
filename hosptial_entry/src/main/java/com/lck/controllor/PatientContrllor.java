@@ -14,6 +14,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import javax.jws.WebParam;
 import javax.persistence.Access;
+import javax.persistence.criteria.CriteriaBuilder;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.*;
@@ -23,14 +24,27 @@ import java.util.List;
 @Controller
 @RequestMapping("/patient")
 public class PatientContrllor {
-
-    @Autowired
     private PatientRepository patientRepository;
+    @Autowired
+    public PatientContrllor(PatientRepository patientRepository){
+        this.patientRepository=patientRepository;
+    }
 
     //患者列表页面
     @GetMapping("/patients")
     public String login(Model model
     ) {
+        model.addAttribute("patients", patientRepository.findAll());
+        return "/patients/list";
+    }
+
+    //删除
+    @GetMapping("/delPatient")
+    public String delPatient(
+            @RequestParam(name="userId") Integer id,
+            Model model
+    ) {
+        patientRepository.deleteById(id);
         model.addAttribute("patients", patientRepository.findAll());
         return "/patients/list";
     }
