@@ -11,4 +11,8 @@ public class PageControllor {
     public String add() {
         return "/patients/filedata";
     }
+    @GetMapping("/toDetail")
+    public String toDetail() {
+        return "redirect:/detail.html";
+    }
 }

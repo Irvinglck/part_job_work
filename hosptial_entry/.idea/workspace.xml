@@ -2,14 +2,29 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="836fdd8c-ae5a-4d7f-9957-887d1e1d0255" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/patients/detail.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/lck/config/WebMvcConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/lck/config/WebMvcConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/lck/controllor/PageControllor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/lck/controllor/PageControllor.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/lck/controllor/PatientContrllor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/lck/controllor/PatientContrllor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/patients/list.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/patients/list.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/lck/config/WebMvcConfig.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/lck/config/WebMvcConfig.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/lck/controllor/PageControllor.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/lck/controllor/PageControllor.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/lck/controllor/PatientContrllor.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/lck/controllor/PatientContrllor.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/patients/list.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/patients/list.html" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="HTML File" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
@@ -19,6 +34,7 @@
     <ConfirmationsSetting value="2" id="Add" />
   </component>
   <component name="PropertiesComponent">
+    <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="RequestMappingsPanelOrder0" value="0" />
     <property name="RequestMappingsPanelOrder1" value="1" />
     <property name="RequestMappingsPanelWidth0" value="75" />
@@ -92,7 +108,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1591924642613</updated>
-      <workItem from="1591924645579" duration="13665000" />
+      <workItem from="1591924645579" duration="17661000" />
     </task>
     <servers />
   </component>
