@@ -68,13 +68,15 @@
                 <form th:action="@{/patient/fileUpload}" method="post" enctype="multipart/form-data">
                     <div class="form-group">
                         <label for="exampleInputFile" class="alertp">上传文件 : </label>
-                        <input type="file" name="patientFile" id="exampleInputFile" class="alertp inputf">
+                        <input type="file"  name="patientFile" id="exampleInputFile" class="alertp inputf">
+                        <input type="hidden" name="grade" th:value="${session.user.getGrade()}" />
                         <span class="help-block alertp att">注意:请上传CSV格式文件</span>
                     </div>
+                    <a th:href="@{/patient/fileDown}" class="btn btn-primary">下载模板</a>
                     <button type="submit" class="btn btn-primary">上传文件</button>
                 </form>
             </div>
-            <div>[[${fileName}]]</div>
+            <div style="color: red">[[${msg}]]</div>
         </main>
     </div>
 </div>
@@ -95,9 +97,12 @@
 
 <!-- Graphs -->
 <!--<script type="text/javascript" src="../../static/js/Chart.min.js"></script>-->
-<script type="text/javascript" th:src="@{/js/Chart.min.js}"></script>
-<script>
+<!--<script type="text/javascript" th:src="@{/js/Chart.min.js}"></script>-->
+<script type="text/javascript">
+    function downFile() {
+        alert("下载文件CVS")
 
+    }
 </script>
 
 </body>
