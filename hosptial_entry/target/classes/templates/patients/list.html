@@ -83,11 +83,9 @@
                             <td th:text="${item.getOpraTime()}"></td>
                             <td th:text="${item.getInhosptialNo()}"></td>
                             <td>
-<!--                                <button class="btn btn-sm btn-primary">详情信息</button>-->
                                 <a class="btn btn-sm btn-primary" th:href="@{/page/toDetail}">详情信息</a>
-
-                                <a class="btn btn-sm btn-danger" th:href="@{/patient/delPatient/}+${item.getId()}">删除</a>
-
+<!--                                <a class="btn btn-sm btn-danger" th:href="@{/patient/delPatient/}+${item.getId()}">删除</a>-->
+                                <input class="btn btn-sm btn-danger" type="button" th:onclick="'javascript:delPatient(\''+${item.getId()}+'\');'" value = "删除" />
                             </td>
                         </tr>
                     </tbody>
@@ -116,7 +114,14 @@
 <!--<script type="text/javascript" src="../../static/js/Chart.min.js"></script>-->
 <script type="text/javascript" th:src="@{/js/Chart.min.js}"></script>
 <script>
-
+   function delPatient(id) {
+      var flag=confirm("确认删除么");
+      if(flag){
+          alert(flag)
+      }else{
+          alert("取消")
+      }
+   }
 </script>
 
 </body>
