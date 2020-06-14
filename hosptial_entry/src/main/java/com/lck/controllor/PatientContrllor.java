@@ -1,7 +1,7 @@
 package com.lck.controllor;
 
-import com.lck.model.Patient;
 import com.lck.repository.PatientRepository;
+import com.lck.util.FileUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -9,22 +9,19 @@ import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
-import javax.jws.WebParam;
-import javax.persistence.Access;
-import javax.persistence.criteria.CriteriaBuilder;
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.*;
-import java.util.ArrayList;
-import java.util.List;
 
 @Controller
 @RequestMapping("/patient")
 public class PatientContrllor {
     private PatientRepository patientRepository;
+    private FileUtils fileUtils;
+
     @Autowired
-    public PatientContrllor(PatientRepository patientRepository){
-        this.patientRepository=patientRepository;
+    public PatientContrllor(PatientRepository patientRepository,FileUtils fileUtils) {
+        this.patientRepository = patientRepository;
+        this.fileUtils=fileUtils;
     }
 
     //患者列表页面
@@ -37,14 +34,16 @@ public class PatientContrllor {
 
     //删除
     @GetMapping("/delPatient/{id}")
+    @ResponseBody
     public String delPatient(
             @PathVariable Integer id,
             Model model
     ) {
         patientRepository.deleteById(id);
         model.addAttribute("patients", patientRepository.findAll());
-        return "/patients/list";
+        return "SUCCESS";
     }
+
 
     //上传文件
     @PostMapping("/fileUpload")
@@ -57,16 +56,23 @@ public class PatientContrllor {
             model.addAttribute("msg", "您暂无上传文件权限");
             return "/patients/filedata";
         }
-        String originalFilename = patientFile.getOriginalFilename();
-        if (StringUtils.isEmpty(originalFilename)) {
-            model.addAttribute("msg", "请选择文件后上传");
+        String fileName = patientFile.getOriginalFilename();
+        assert fileName != null;
+        String[] split = fileName.split(".");
+        for (int i = 0; i < split.length; i++) {
+            System.out.println(split[i]);
+        }
+        if (StringUtils.isEmpty(fileName)) {
+            model.addAttribute("msg", "请选择csv文件上传");
             return "/patients/filedata";
         }
-        model.addAttribute("msg", originalFilename);
+        //上传文件
+        fileUtils.uploadFileCsv(patientFile);
+        model.addAttribute("msg", fileName);
         return "/patients/filedata";
     }
 
-    //上传文件
+    //下载模板文件
     @GetMapping("/fileDown")
     public String downloadFile(HttpServletResponse response, Model model) {
         String fileName = "template.xlsx";// 设置文件名，根据业务需要替换成要下载的文件名
