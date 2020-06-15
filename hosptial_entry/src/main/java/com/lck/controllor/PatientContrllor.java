@@ -1,6 +1,7 @@
 package com.lck.controllor;
 
 import com.lck.model.Patient;
+import com.lck.model.PatientDes;
 import com.lck.repository.PatientDesRepository;
 import com.lck.repository.PatientRepository;
 import com.lck.util.FileUtils;
@@ -14,6 +15,8 @@ import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletResponse;
 import java.io.*;
+import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 @Controller
@@ -52,7 +55,20 @@ public class PatientContrllor {
         model.addAttribute("patients", patientRepository.findAll());
         return "SUCCESS";
     }
+    //详情信息
+    @GetMapping("/toDetail/{number}")
+    private String toDetail(
+            @PathVariable String number,//编号
+            Model model
+    ){
+        PatientDes patientDes = patientDesRepository.findByNumber(number);
+        convertToMap(patientDes);
+        return null ;
+    }
 
+    private List<Map<String,String>> convertToMap(PatientDes patientDes) {
+        return null;
+    }
 
     //上传文件
     @PostMapping("/fileUpload")

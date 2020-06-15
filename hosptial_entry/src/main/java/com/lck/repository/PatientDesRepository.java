@@ -15,4 +15,7 @@ public interface PatientDesRepository extends CrudRepository<PatientDes,Integer>
     @Query(value = "delete from t_patient_des where `number` =?1",nativeQuery = true)
     void delPatientDes(String number);
 
+    @Query(value = "select *  from t_patient_des where `number` =?1",nativeQuery = true)
+    PatientDes findByNumber(String number);
+
 }

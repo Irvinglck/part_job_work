@@ -2,30 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5e84bc38-e23e-4c0f-b1ef-7a061af8527e" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/lck/repository/AdviceDrugRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/lck/repository/PatientDesRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/back/advice.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/back/template .csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/lck/util/ConvertUtil.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/lck/controllor/PatientContrllor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/lck/controllor/PatientContrllor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/lck/model/AdviceDrug.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/lck/model/AdviceDrug.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/lck/model/Patient.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/lck/model/Patient.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/lck/model/PatientDes.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/lck/model/PatientDes.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/lck/repository/PatientRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/lck/repository/PatientRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/lck/util/FileUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/lck/util/FileUtils.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/lck/repository/PatientDesRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/lck/repository/PatientDesRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/application-dev.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application-dev.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/back/detail.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/back/detail.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/back/template - 副本.csv" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/back/template - 副本.csv" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/templates/patients/list.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/patients/list.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/com/lck/HosptialEntryApplicationTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/lck/HosptialEntryApplicationTests.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/application-dev.yml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/application-dev.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/lck/controllor/PatientContrllor.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/lck/controllor/PatientContrllor.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/lck/model/AdviceDrug.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/lck/model/AdviceDrug.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/lck/model/PatientDes.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/lck/model/PatientDes.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/lck/repository/PatientRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/lck/repository/PatientRepository.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/lck/util/FileUtils.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/lck/util/FileUtils.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/back/detail.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/back/detail.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/templates/patients/list.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/patients/list.html" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -37,8 +22,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Class" />
         <option value="Interface" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -91,7 +76,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Spring Boot.HosptialEntryApplication">
+  <component name="RunManager" selected="JUnit.HosptialEntryApplicationTests.contextLoads">
     <configuration name="MainTest" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.lck.MainTest" />
       <module name="hosptial_entry" />
@@ -130,8 +115,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.MainTest" />
         <item itemvalue="JUnit.HosptialEntryApplicationTests.contextLoads" />
+        <item itemvalue="Application.MainTest" />
       </list>
     </recent_temporary>
   </component>
@@ -147,6 +132,7 @@
       <updated>1592042006767</updated>
       <workItem from="1592042008308" duration="3590000" />
       <workItem from="1592186523994" duration="21522000" />
+      <workItem from="1592228104899" duration="3289000" />
     </task>
     <servers />
   </component>
@@ -171,7 +157,7 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/lck/controllor/PatientContrllor.java</url>
-          <line>49</line>
+          <line>74</line>
           <option name="timeStamp" value="9" />
         </line-breakpoint>
       </breakpoints>

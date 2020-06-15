@@ -83,7 +83,7 @@
                             <td th:text="${item.getOpraTime()}"></td>
                             <td th:text="${item.getRoomId()}"></td>
                             <td>
-                                <a class="btn btn-sm btn-primary" th:href="@{/page/toDetail}">详情信息</a>
+                                <a class="btn btn-sm btn-primary" th:href="@{/page/toDetail/}+${item.getNumber()}">详情信息</a>
 <!--                                <a class="btn btn-sm btn-danger" th:href="@{/patient/delPatient/}+${item.getId()}">删除</a>-->
                                 <input class="btn btn-sm btn-danger" type="button" th:onclick="'javascript:delPatient(\''+${item.getId()}+'\');'" value = "删除" />
                             </td>
