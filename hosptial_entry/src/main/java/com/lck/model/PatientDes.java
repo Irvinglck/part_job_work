@@ -13,8 +13,8 @@ public class PatientDes {
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
     private Integer id;
-    @Column(length =11,name = "patient_id")
-    private Integer patientId;
+    @Column(length =50,name = "number")
+    private String number;
     //随访时间
     @Column(length =100)
     private String followUpTimeV;

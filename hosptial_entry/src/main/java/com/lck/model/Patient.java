@@ -42,8 +42,7 @@ public class Patient {
     @Column(length =50)
     private String opraTime;
     @Column(length =50)
-    //住院号
-    private String InhosptialNo;
+    private String roomId;   //住院号
 
 
 

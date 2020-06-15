@@ -1,4 +1,6 @@
 sqlite:
   path:
-#    url: jdbc:sqlite:D:\gogledownload\sqlite\hospital_entry.db
-    url: jdbc:sqlite:D:\googleInstall\sqlite\hospital_entry.db
+#    zh
+    url: jdbc:sqlite:D:\gogledownload\sqlite\hospital_entry.db
+#    home
+#    url: jdbc:sqlite:D:\googleInstall\sqlite\hospital_entry.db

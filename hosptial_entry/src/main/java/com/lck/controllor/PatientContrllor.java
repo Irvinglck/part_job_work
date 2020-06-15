@@ -1,9 +1,12 @@
 package com.lck.controllor;
 
+import com.lck.model.Patient;
+import com.lck.repository.PatientDesRepository;
 import com.lck.repository.PatientRepository;
 import com.lck.util.FileUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
@@ -11,23 +14,27 @@ import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletResponse;
 import java.io.*;
+import java.util.Optional;
 
 @Controller
 @RequestMapping("/patient")
 public class PatientContrllor {
     private PatientRepository patientRepository;
     private FileUtils fileUtils;
+    private PatientDesRepository patientDesRepository;
 
     @Autowired
-    public PatientContrllor(PatientRepository patientRepository,FileUtils fileUtils) {
+    public PatientContrllor(PatientRepository patientRepository,FileUtils fileUtils,PatientDesRepository patientDesRepository) {
         this.patientRepository = patientRepository;
         this.fileUtils=fileUtils;
+        this.patientDesRepository=patientDesRepository;
     }
 
     //患者列表页面
     @GetMapping("/patients")
     public String login(Model model
     ) {
+        Iterable<Patient> all = patientRepository.findAll();
         model.addAttribute("patients", patientRepository.findAll());
         return "/patients/list";
     }
@@ -39,7 +46,9 @@ public class PatientContrllor {
             @PathVariable Integer id,
             Model model
     ) {
+        Patient patient = patientRepository.findById(id).get();
         patientRepository.deleteById(id);
+        patientDesRepository.delPatientDes(patient.getNumber());
         model.addAttribute("patients", patientRepository.findAll());
         return "SUCCESS";
     }
@@ -58,7 +67,7 @@ public class PatientContrllor {
         }
         String fileName = patientFile.getOriginalFilename();
         assert fileName != null;
-        String[] split = fileName.split(".");
+        String[] split = fileName.split("\\.");
         for (int i = 0; i < split.length; i++) {
             System.out.println(split[i]);
         }
@@ -66,9 +75,15 @@ public class PatientContrllor {
             model.addAttribute("msg", "请选择csv文件上传");
             return "/patients/filedata";
         }
+        String result;
         //上传文件
-        fileUtils.uploadFileCsv(patientFile);
-        model.addAttribute("msg", fileName);
+        if("template .csv".equals(fileName)){
+            result=fileUtils.uploadFileCsv(patientFile);
+        }else{
+            result=fileUtils.uploadAdviceCsv(patientFile);
+        }
+
+        model.addAttribute("msg", result);
         return "/patients/filedata";
     }
 

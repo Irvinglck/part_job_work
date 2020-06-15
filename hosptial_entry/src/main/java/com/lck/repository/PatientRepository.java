@@ -8,6 +8,7 @@ import org.springframework.stereotype.Component;
 
 @Component
 public interface PatientRepository extends CrudRepository<Patient, Integer> {
-
+    @Query(value = "select * from t_patient u where u.number =?1",nativeQuery=true)
+    Patient findByPatientNumber(String number);
 
 }
