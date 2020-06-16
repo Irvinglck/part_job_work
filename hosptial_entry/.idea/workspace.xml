@@ -2,16 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5e84bc38-e23e-4c0f-b1ef-7a061af8527e" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/lck/util/ConvertUtil.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/lck/controllor/PatientContrllor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/lck/controllor/PatientContrllor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/lck/repository/PatientDesRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/lck/repository/PatientDesRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/application-dev.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application-dev.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/patients/list.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/patients/list.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/lck/HosptialEntryApplicationTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/lck/HosptialEntryApplicationTests.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/application-dev.yml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/application-dev.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/lck/controllor/PatientContrllor.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/lck/controllor/PatientContrllor.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/patients/list.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/patients/list.html" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -22,8 +13,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Interface" />
         <option value="Class" />
+        <option value="Interface" />
       </list>
     </option>
   </component>
@@ -115,8 +106,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.HosptialEntryApplicationTests.contextLoads" />
         <item itemvalue="Application.MainTest" />
+        <item itemvalue="JUnit.HosptialEntryApplicationTests.contextLoads" />
       </list>
     </recent_temporary>
   </component>
@@ -131,8 +122,8 @@
       <option name="presentableId" value="Default" />
       <updated>1592042006767</updated>
       <workItem from="1592042008308" duration="3590000" />
-      <workItem from="1592186523994" duration="21522000" />
-      <workItem from="1592228104899" duration="3289000" />
+      <workItem from="1592186523994" duration="21759000" />
+      <workItem from="1592271696578" duration="33000" />
     </task>
     <servers />
   </component>
