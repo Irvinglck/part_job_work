@@ -8,7 +8,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>上海九院患者管理后台</title>
+    <title>上海六院患者管理后台</title>
     <!-- Bootstrap core CSS -->
     <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet">
     <!-- Custom styles for this template -->
@@ -62,7 +62,7 @@
 <div class="container-fluid">
     <div class="row">
         <div th:replace="~{commons/common::sidebar(active='filedata.html')}"></div>
-        <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
+        <main role="main" class="col-md-9 ml-sm-auto col-lg-11 pt-3 px-4">
             <h3 style="color: #007BFF">患者数据录入</h3>
             <div class="box-form">
                 <form th:action="@{/patient/fileUpload}" method="post" enctype="multipart/form-data">

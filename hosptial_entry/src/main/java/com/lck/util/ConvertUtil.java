@@ -15,6 +15,8 @@ public class ConvertUtil {
                 boolean flag = field.isAccessible();
                 field.setAccessible(true);
                 Object o = field.get(object);
+                if("id".equals(field.getName())||"number".equals(field.getName()))
+                    continue;
                 map.put(field.getName(), o);
                 field.setAccessible(flag);
             } catch (Exception e) {

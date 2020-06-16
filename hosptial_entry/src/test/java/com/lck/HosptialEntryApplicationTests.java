@@ -41,9 +41,11 @@ public class HosptialEntryApplicationTests {
             int k=0;
             for (int j = 0; j < items.length; j++) {
                 result.put("V"+(k++),items[j]);
-                ListResult.add(result);
             }
+            ListResult.add(result);
+//            System.out.println(values[i]);
         }
+        System.out.println(ListResult.size()+"------------------");
         ListResult.forEach(item->{
             item.forEach((k,v)->{
                 System.out.println(k+"----------"+v);

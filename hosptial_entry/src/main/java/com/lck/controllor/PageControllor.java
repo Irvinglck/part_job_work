@@ -15,11 +15,8 @@ public class PageControllor {
     public String toDetail() {
         return "redirect:/detail.html";
     }
-    @GetMapping("/toDetail1")
-    public String toDetail1() {
-        return "redirect:/detail1.html";
-    }    @GetMapping("/toDetail2")
-    public String toDetail2() {
-        return "redirect:/detail2.html";
+    @GetMapping("/addPatient")
+    public String addPatient() {
+        return "redirect:/add.html";
     }
 }
