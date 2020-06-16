@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
+import org.springframework.util.CollectionUtils;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
@@ -73,6 +74,20 @@ public class PatientContrllor {
         model.addAttribute("patients", patientRepository.findAll());
         return "SUCCESS";
     }
+    //添加患者基础信息
+    @PostMapping("/addPatient")
+    public String addPatient(
+            Patient patient,
+            Model model
+    ) {
+        Patient save = patientRepository.save(patient);
+        if(save!=null){
+            model.addAttribute("patients",patientRepository.findAll());
+            return "redirect:/list.html";
+        }else{
+            return "/patients/add";
+        }
+    }
     //详情信息
     @GetMapping("/toDetail/{number}")
     private String toDetail(
@@ -91,8 +106,17 @@ public class PatientContrllor {
     public String adviceDrug(@PathVariable String number,
                              Model model){
         List<AdviceDrug> adviceDrugs = adviceDrugRepository.findByNumber(number);
-        model.addAttribute("adviceDrugs",adviceDrugs);
-        return "/patients/advice";
+        if(CollectionUtils.isEmpty(adviceDrugs)) {
+            Patient patient = patientRepository.findByPatientNumber(number);
+            List<AdviceDrug> resutl=new ArrayList<>();
+            AdviceDrug adviceDrug=new AdviceDrug().setName(patient.getUsername());
+            resutl.add(adviceDrug);
+            model.addAttribute("adviceDrugs",resutl);
+            return "/patients/advice";
+        }else{
+            model.addAttribute("adviceDrugs",adviceDrugs);
+            return "/patients/advice";
+        }
     }
     private List<Map<String,String>> convertToMap(PatientDes patientDes) {
         Map<String, Object> stringObjectMap = convertUtil.entityToMap(patientDes);
