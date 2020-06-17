@@ -14,8 +14,8 @@
 
 	<body class="text-center">
 		<form class="form-signin" th:action="@{/login}">
-			<img class="mb-4" th:src="@{/img/bootstrap-solid.svg}" alt="" width="72" height="72">
-<!--			<img class="mb-4" th:src="@{/img/jyuan.jpg}" alt="" width="72" height="72">-->
+<!--			<img class="mb-4" th:src="@{/img/bootstrap-solid.svg}" alt="" width="72" height="72">-->
+			<img class="mb-4" th:src="@{/img/logo.jpg}" alt="" width="188" height="188">
 			<h1 class="h3 mb-3 font-weight-normal">患者管理系统</h1>
 			<p th:text="${msg}" style="color: red" th:if="${not #strings.isEmpty(msg)}"></p>
 			<label class="sr-only">Username</label>
@@ -29,8 +29,8 @@
 			</div>
 			<button class="btn btn-lg btn-primary btn-block" type="submit">登录</button>
 			<p class="mt-5 mb-3 text-muted">© 2020-2021</p>
-			<a class="btn btn-sm">中文</a>
-			<a class="btn btn-sm">English</a>
+<!--			<a class="btn btn-sm">中文</a>-->
+<!--			<a class="btn btn-sm">English</a>-->
 		</form>
 
 	</body>

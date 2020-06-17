@@ -20,6 +20,8 @@ import org.springframework.web.multipart.MultipartFile;
 import javax.persistence.Column;
 import javax.servlet.http.HttpServletResponse;
 import java.io.*;
+import java.lang.reflect.Field;
+import java.lang.reflect.Modifier;
 import java.util.*;
 
 @Controller
@@ -32,13 +34,13 @@ public class PatientContrllor {
     private AdviceDrugRepository adviceDrugRepository;
 
     @Autowired
-    public PatientContrllor(PatientRepository patientRepository,FileUtils fileUtils,PatientDesRepository patientDesRepository,
-                            ConvertUtil convertUtil,AdviceDrugRepository adviceDrugRepository) {
+    public PatientContrllor(PatientRepository patientRepository, FileUtils fileUtils, PatientDesRepository patientDesRepository,
+                            ConvertUtil convertUtil, AdviceDrugRepository adviceDrugRepository) {
         this.patientRepository = patientRepository;
-        this.fileUtils=fileUtils;
-        this.patientDesRepository=patientDesRepository;
-        this.convertUtil=convertUtil;
-        this.adviceDrugRepository=adviceDrugRepository;
+        this.fileUtils = fileUtils;
+        this.patientDesRepository = patientDesRepository;
+        this.convertUtil = convertUtil;
+        this.adviceDrugRepository = adviceDrugRepository;
     }
 
     //患者列表页面
@@ -53,7 +55,7 @@ public class PatientContrllor {
     //根据名字查询
     @GetMapping("/findByName")
     public String findByName(
-            @RequestParam(name="username") String name,
+            @RequestParam(name = "username") String name,
             Model model
     ) {
         List<Patient> patients = patientRepository.findByName(name);
@@ -74,6 +76,7 @@ public class PatientContrllor {
         model.addAttribute("patients", patientRepository.findAll());
         return "SUCCESS";
     }
+
     //添加患者基础信息
     @PostMapping("/addPatient")
     public String addPatient(
@@ -81,90 +84,135 @@ public class PatientContrllor {
             Model model
     ) {
         Patient save = patientRepository.save(patient);
-        if(save!=null){
-            model.addAttribute("patients",patientRepository.findAll());
+        if (save != null) {
+            model.addAttribute("patients", patientRepository.findAll());
             return "redirect:/list.html";
-        }else{
+        } else {
             return "/patients/add";
         }
     }
+
     //添加患者基础信息
     @PostMapping("/addPatientDes")
     public String addPatientDes(
             PatientDes patientDes,
             Model model
     ) {
-        PatientDes save = patientDesRepository.save(patientDes);
-        if(save!=null){
-            model.addAttribute("patients",patientDesRepository.findAll());
-            return "redirect:/filedata.html";
-        }else{
+        PatientDes des = patientDesRepository.findByNumber(patientDes.getNumber());
+        if (des != null) {
+            PatientDes combineBean = combineSydwCore(des, patientDes);
+            patientDesRepository.save(combineBean.setNumber(des.getNumber()).setId(des.getId()));
+            model.addAttribute("msg", "追加录入跟踪数据成功");
             return "/patients/add";
+        } else {
+            PatientDes save = patientDesRepository.save(patientDes);
+            if (save != null) {
+                model.addAttribute("msg", "添加录入跟踪数据成功");
+                return "/patients/add";
+            } else {
+                model.addAttribute("msg", "录入跟踪数据失败,请检查患者编号");
+                return "/patients/add";
+            }
         }
     }
+
+
+    private PatientDes combineSydwCore(PatientDes source, PatientDes target) {
+        Class sourceBeanClass = source.getClass();
+        Class targetBeanClass = target.getClass();
+
+        Field[] sourceFields = sourceBeanClass.getDeclaredFields();
+        Field[] targetFields = targetBeanClass.getDeclaredFields();
+        for (int i = 0; i < sourceFields.length; i++) {
+            Field sourceField = sourceFields[i];
+            if (Modifier.isStatic(sourceField.getModifiers())) {
+                continue;
+            }
+            Field targetField = targetFields[i];
+            if (Modifier.isStatic(targetField.getModifiers())) {
+                continue;
+            }
+            if(targetField.getName().equals("id"))
+                continue;
+            sourceField.setAccessible(true);
+            targetField.setAccessible(true);
+            try {
+                if (!(sourceField.get(source) == null) && !"serialVersionUID".equals(sourceField.getName().toString())) {
+                    targetField.set(target, sourceField.get(source) + "" + targetField.get(target));
+                }
+            } catch (IllegalArgumentException | IllegalAccessException e) {
+                e.printStackTrace();
+            }
+        }
+        return target;
+    }
+
+
     //详情信息
     @GetMapping("/toDetail/{number}")
     private String toDetail(
             @PathVariable String number,//编号
             Model model
-    ){
+    ) {
         PatientDes patientDes = patientDesRepository.findByNumber(number);
         List<Map<String, String>> maps = convertToMap(patientDes);
         Patient patient = patientRepository.findByPatientNumber(patientDes.getNumber());
-        model.addAttribute("maps",maps);
-        model.addAttribute("user",patient);
-        return "/patients/detail" ;
+        model.addAttribute("maps", maps);
+        model.addAttribute("user", patient);
+        return "/patients/detail";
     }
+
     //查看用药方案
     @GetMapping("/advieDrug/{number}")
     public String adviceDrug(@PathVariable String number,
-                             Model model){
+                             Model model) {
         List<AdviceDrug> adviceDrugs = adviceDrugRepository.findByNumber(number);
-        if(CollectionUtils.isEmpty(adviceDrugs)) {
+        if (CollectionUtils.isEmpty(adviceDrugs)) {
             Patient patient = patientRepository.findByPatientNumber(number);
-            List<AdviceDrug> resutl=new ArrayList<>();
-            AdviceDrug adviceDrug=new AdviceDrug().setName(patient.getUsername());
+            List<AdviceDrug> resutl = new ArrayList<>();
+            AdviceDrug adviceDrug = new AdviceDrug().setName(patient.getUsername());
             resutl.add(adviceDrug);
-            model.addAttribute("adviceDrugs",resutl);
+            model.addAttribute("adviceDrugs", resutl);
             return "/patients/advice";
-        }else{
-            model.addAttribute("adviceDrugs",adviceDrugs);
+        } else {
+            model.addAttribute("adviceDrugs", adviceDrugs);
             return "/patients/advice";
         }
     }
-    private List<Map<String,String>> convertToMap(PatientDes patientDes) {
+
+    private List<Map<String, String>> convertToMap(PatientDes patientDes) {
         Map<String, Object> stringObjectMap = convertUtil.entityToMap(patientDes);
-        StringBuilder sb=new StringBuilder();
-        stringObjectMap.forEach((k,v)->{
-            sb.append(k+","+v+";");
+        StringBuilder sb = new StringBuilder();
+        stringObjectMap.forEach((k, v) -> {
+            sb.append(k + "," + v + ";");
         });
         String[] values = sb.toString().split("\\;");
-        List<Map<String,String>> ListResult=new LinkedList<>();
-        for (int i = 0; i <values.length ; i++) {
-            Map<String,String> result=new TreeMap<>();
+        List<Map<String, String>> ListResult = new LinkedList<>();
+        for (int i = 0; i < values.length; i++) {
+            Map<String, String> result = new TreeMap<>();
             String[] items = values[i].split("\\,");
-            int k=0;
+            int k = 0;
             for (int j = 0; j < items.length; j++) {
-                result.put("V"+(k++),getMappingField(items[j])!=null?getMappingField(items[j]):items[j]);
+                result.put("V" + (k++), getMappingField(items[j]) != null ? getMappingField(items[j]) : items[j]);
             }
             ListResult.add(result);
         }
         return ListResult;
     }
 
-    private String getMappingField(String key){
-        Map<String,String> mapTable=new HashMap<>();
-        mapTable.put("weightV","体重");
-        mapTable.put("fatV","腹内脂肪");
-        mapTable.put("acidV","尿酸");
-        mapTable.put("skinFatV","皮下脂肪");
-        mapTable.put("pressureV","收缩压");
-        mapTable.put("disPressureV","舒张压");
-        mapTable.put("bodyIndexV","体重指数");
-        mapTable.put("hiplineV","臀围");
-        mapTable.put("hipRatioV","腰臀比");
-        mapTable.put("waistV","腰围");
-        mapTable.put("followUpTimeV","随访时间");
+    private String getMappingField(String key) {
+        Map<String, String> mapTable = new HashMap<>();
+        mapTable.put("weightV", "体重");
+        mapTable.put("fatV", "腹内脂肪");
+        mapTable.put("acidV", "尿酸");
+        mapTable.put("skinFatV", "皮下脂肪");
+        mapTable.put("pressureV", "收缩压");
+        mapTable.put("disPressureV", "舒张压");
+        mapTable.put("bodyIndexV", "体重指数");
+        mapTable.put("hiplineV", "臀围");
+        mapTable.put("hipRatioV", "腰臀比");
+        mapTable.put("waistV", "腰围");
+        mapTable.put("followUpTimeV", "随访时间");
         return mapTable.get(key);
     }
 
@@ -191,10 +239,10 @@ public class PatientContrllor {
         }
         String result;
         //上传文件
-        if("template .csv".equals(fileName)){
-            result=fileUtils.uploadFileCsv(patientFile);
-        }else{
-            result=fileUtils.uploadAdviceCsv(patientFile);
+        if ("template .csv".equals(fileName)) {
+            result = fileUtils.uploadFileCsv(patientFile);
+        } else {
+            result = fileUtils.uploadAdviceCsv(patientFile);
         }
 
         model.addAttribute("msg", result);

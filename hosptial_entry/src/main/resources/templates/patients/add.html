@@ -156,9 +156,10 @@
                     </div>
 
                     <div class="table-responsive">
-                        <form class="form-inline" th:action="@{/patient/addPatientDes}" role="form">
+                        <form class="form-inline" method="POST" th:action="@{/patient/addPatientDes}" role="form">
                             <div class="warp">
                                 <h4>患者跟踪数据采集</h4>
+                                <div style="color: red">[[${msg}]]</div>
                                 <div class="form-group">
                                     <label for="number">编号：</label>
                                     <input type="text" class="form-control" name="number" id="number"
