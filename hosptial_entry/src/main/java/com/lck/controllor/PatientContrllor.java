@@ -88,6 +88,20 @@ public class PatientContrllor {
             return "/patients/add";
         }
     }
+    //添加患者基础信息
+    @PostMapping("/addPatientDes")
+    public String addPatientDes(
+            PatientDes patientDes,
+            Model model
+    ) {
+        PatientDes save = patientDesRepository.save(patientDes);
+        if(save!=null){
+            model.addAttribute("patients",patientDesRepository.findAll());
+            return "redirect:/filedata.html";
+        }else{
+            return "/patients/add";
+        }
+    }
     //详情信息
     @GetMapping("/toDetail/{number}")
     private String toDetail(

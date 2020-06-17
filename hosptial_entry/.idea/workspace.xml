@@ -2,27 +2,41 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cd574323-8f51-4bd7-9765-51233a9d3354" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/img/logo.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/patients/add_bak.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/lck/controllor/PatientContrllor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/lck/controllor/PatientContrllor.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/application-dev.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application-dev.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/back/advice.csv" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/back/advice.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/img/jyuan.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/back/template .csv" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/back/template .csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/templates/patients/add.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/patients/add.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/META-INF/hosptial_entry.kotlin_module" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/application-dev.yml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/application-dev.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/application.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/lck/config/WebMvcConfig.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/lck/config/WebMvcConfig.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/lck/controllor/PageControllor.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/lck/controllor/PageControllor.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/lck/controllor/PatientContrllor.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/lck/controllor/PatientContrllor.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/lck/repository/AdviceDrugRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/lck/repository/AdviceDrugRepository.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/lck/repository/PatientRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/lck/repository/PatientRepository.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/lck/util/ConvertUtil.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/lck/util/ConvertUtil.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/img/jyuan.jpg" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/static/js/axios.min.js" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/static/js/jquery-3.2.1.slim.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/back/advice.csv" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/back/advice.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/back/template .csv" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/back/template .csv" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/templates/commons/common.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/commons/common.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/templates/patients/detail.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/patients/detail.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/templates/patients/detail1.html" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/templates/patients/detail2.html" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/templates/patients/filedata.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/patients/filedata.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/templates/patients/list.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/patients/list.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/test-classes/com/lck/HosptialEntryApplicationTests.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/com/lck/HosptialEntryApplicationTests.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../王爷/template .csv" beforeDir="false" afterPath="$PROJECT_DIR$/../王爷/template .csv" afterDir="false" />
     </list>
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -31,6 +45,7 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
+  <component name="ProjectId" id="1dQZxBuN817UnuX9tzDzOXFlGy7" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
   </component>
@@ -39,7 +54,9 @@
     <property name="RequestMappingsPanelOrder1" value="1" />
     <property name="RequestMappingsPanelWidth0" value="75" />
     <property name="RequestMappingsPanelWidth1" value="75" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/resources/templates/back" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/resources/templates/patients" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -50,6 +67,9 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\luoPe\Desktop\part_job\pro\hosptial\part_job_work\hosptial_entry\src\main\resources\templates\patients" />
+      <recent name="C:\Users\luoPe\Desktop\part_job\pro\hosptial\part_job_work\hosptial_entry\src\main\resources\templates\back" />
+      <recent name="C:\Users\luoPe\Desktop\part_job\pro\hosptial\part_job_work\hosptial_entry\src\main\resources\static\img" />
       <recent name="C:\Users\Administrator\Desktop\part_job\pro\part_job_work\hosptial_entry\src\main\resources\templates\back" />
     </key>
   </component>
@@ -89,17 +109,41 @@
     <configuration />
   </component>
   <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="cd574323-8f51-4bd7-9765-51233a9d3354" name="Default Changelist" comment="" />
+      <created>1592359522084</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1592359522084</updated>
+      <workItem from="1592359524941" duration="14031000" />
+    </task>
     <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
           </value>
         </entry>
       </map>
     </option>
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/lck/controllor/PatientContrllor.java</url>
+          <line>96</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>
