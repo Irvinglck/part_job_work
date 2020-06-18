@@ -158,7 +158,7 @@
                             <li>
 
                                 <a th:each="i:${pageInfo.navigatepageNums}"
-                                   th:href="@{/stuList(pn=${i})}"
+                                   th:href="@{/stuList(pn=${i},pageSize=${10})}"
                                    th:text="${i}" class="btn btn-sm"
                                    data-th-classappend="${(pageInfo.pageCurrent) eq i} ? 'btn-primary' : ''">
                                 </a>

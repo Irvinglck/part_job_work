@@ -52,6 +52,7 @@ public class PatientContrllor {
             Model model
     ) {
 //        Iterable<Patient> all = patientRepository.findAll();
+
         model.addAttribute("patients", patientRepository.findAll());
         model.addAttribute("pageInfo",
                 new PageInfo<>().setPageCurrent(1).setPageSize(3).setTotalCount(7).setTotalPage(4));
