@@ -8,6 +8,7 @@ import com.lck.repository.PatientDesRepository;
 import com.lck.repository.PatientRepository;
 import com.lck.util.ConvertUtil;
 import com.lck.util.FileUtils;
+import com.lck.util.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
@@ -45,10 +46,15 @@ public class PatientContrllor {
 
     //患者列表页面
     @GetMapping("/patients")
-    public String login(Model model
+    public String login(
+            @RequestParam(name="pageCurrent",required = false) Integer pageCurrent,
+            @RequestParam(name="pageSize",required = false) Integer pageSize,
+            Model model
     ) {
 //        Iterable<Patient> all = patientRepository.findAll();
         model.addAttribute("patients", patientRepository.findAll());
+        model.addAttribute("pageInfo",
+                new PageInfo<>().setPageCurrent(1).setPageSize(3).setTotalCount(7).setTotalPage(4));
         return "/patients/list";
     }
 
@@ -239,7 +245,7 @@ public class PatientContrllor {
         }
         String result;
         //上传文件
-        if ("template .csv".equals(fileName)) {
+        if ("template.csv".equals(fileName)) {
             result = fileUtils.uploadFileCsv(patientFile);
         } else {
             result = fileUtils.uploadAdviceCsv(patientFile);
@@ -252,7 +258,7 @@ public class PatientContrllor {
     //下载模板文件
     @GetMapping("/fileDown")
     public String downloadFile(HttpServletResponse response, Model model) {
-        String fileName = "template.xlsx";// 设置文件名，根据业务需要替换成要下载的文件名
+        String fileName = "template.csv";// 设置文件名，根据业务需要替换成要下载的文件名
         //设置文件路径
         String realPath = "D:\\part_job\\template";
         File file = new File(realPath, fileName);
@@ -295,5 +301,7 @@ public class PatientContrllor {
             model.addAttribute("msg", "文件路径不存在");
             return "/patients/filedata";
         }
+
     }
+
 }

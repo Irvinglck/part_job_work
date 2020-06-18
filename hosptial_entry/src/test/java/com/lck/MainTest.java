@@ -2,6 +2,7 @@ package com.lck;
 
 import com.lck.model.PatientDes;
 
+import java.io.File;
 import java.lang.reflect.Field;
 import java.lang.reflect.Modifier;
 import java.util.HashMap;
@@ -9,38 +10,13 @@ import java.util.Map;
 
 public class MainTest {
     public static void main(String[] args) {
-        PatientDes p1=new PatientDes().setNumber("123");
-        PatientDes p2=new PatientDes().setNumber("678");
-        PatientDes patientDes = combineSydwCore(p1, p2);
-        System.out.println(patientDes);
+        String fileName = "templategz.zip";// 设置文件名，根据业务需要替换成要下载的文件名
+        //设置文件路径
+        String realPath = "D:\\lyuan\\template";
+        File file = new File(realPath);
+        if(!file.exists())
+            file.mkdirs();
     }
 
 
-    private static PatientDes combineSydwCore(PatientDes patientDes, PatientDes des) {
-        Class sourceBeanClass = patientDes.getClass();
-        Class targetBeanClass = des.getClass();
-
-        Field[] sourceFields = sourceBeanClass.getDeclaredFields();
-        Field[] targetFields = targetBeanClass.getDeclaredFields();
-        for (int i = 0; i < sourceFields.length; i++) {
-            Field sourceField = sourceFields[i];
-            if (Modifier.isStatic(sourceField.getModifiers())) {
-                continue;
-            }
-            Field targetField = targetFields[i];
-            if (Modifier.isStatic(targetField.getModifiers())) {
-                continue;
-            }
-            sourceField.setAccessible(true);
-            targetField.setAccessible(true);
-            try {
-                if (!(sourceField.get(patientDes) == null) && !"serialVersionUID".equals(sourceField.getName().toString())) {
-                    targetField.set(des, sourceField.get(patientDes)+""+targetField.get(des));
-                }
-            } catch (IllegalArgumentException | IllegalAccessException e) {
-                e.printStackTrace();
-            }
-        }
-        return des;
-    }
 }
