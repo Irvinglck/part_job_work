@@ -14,6 +14,7 @@ import org.springframework.web.multipart.MultipartFile;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.List;
 
 @Component
 public class FileUtils {
@@ -49,11 +50,9 @@ public class FileUtils {
                 String isFirstOpra = csvReader.get("首次手术");
                 String opraTime = csvReader.get("手术日期");
                 String roomId = csvReader.get("住院号");
-
-
+                //重复编号的不在继续添加
                 Patient pat = patientRepository.findByPatientNumber(number);
                 if(pat!=null){
-
                     continue;
                 }
 

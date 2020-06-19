@@ -27,6 +27,8 @@ public class HosptialEntryApplicationTests {
 
     @Test
     public void contextLoads() {
+
+
         PatientDes patientDes = patientDesRepository.findByNumber("DS001");
         Map<String, Object> stringObjectMap = convertUtil.entityToMap(patientDes);
         StringBuilder sb=new StringBuilder();
