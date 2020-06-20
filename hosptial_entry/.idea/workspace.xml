@@ -2,22 +2,19 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cd574323-8f51-4bd7-9765-51233a9d3354" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/target/classes/templates/back/advice.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/lck/util/QuickPage.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/lck/HosptialEntryApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/lck/HosptialEntryApplication.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/lck/controllor/PatientContrllor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/lck/controllor/PatientContrllor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/lck/repository/PatientRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/lck/repository/PatientRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/lck/util/FileUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/lck/util/FileUtils.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/lck/util/PageInfo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/lck/util/PageInfo.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/application-dev.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application-dev.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/file/templategz.zip" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/file/fileupload.zip" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/patients/add.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/patients/add.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/patients/advice.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/patients/advice.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/templates/patients/detail.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/patients/detail.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/templates/patients/filedata.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/patients/filedata.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/templates/patients/list.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/patients/list.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/lck/HosptialEntryApplicationTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/lck/HosptialEntryApplicationTests.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/application-dev.yml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/application-dev.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/lck/HosptialEntryApplication.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/lck/HosptialEntryApplication.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/lck/controllor/PatientContrllor.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/lck/controllor/PatientContrllor.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/lck/controllor/PatientContrllor.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/lck/repository/PatientRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/lck/repository/PatientRepository.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/lck/util/FileUtils.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/lck/util/FileUtils.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/static/file/template.xlsx" beforeDir="false" />
@@ -76,6 +73,7 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Administrator\Desktop\part_job\pro\part_job_work\hosptial_entry\src\main\resources\static\file" />
       <recent name="C:\Users\luoPe\Desktop\part_job\pro\hosptial\part_job_work\hosptial_entry\src\main\resources\static\file" />
       <recent name="C:\Users\Administrator\Desktop\part_job\pro\part_job_work\hosptial_entry\src\main\resources\templates\back" />
     </key>
@@ -138,6 +136,7 @@
       <updated>1592533539611</updated>
       <workItem from="1592533542525" duration="608000" />
       <workItem from="1592534238096" duration="16516000" />
+      <workItem from="1592662956176" duration="1061000" />
     </task>
     <servers />
   </component>

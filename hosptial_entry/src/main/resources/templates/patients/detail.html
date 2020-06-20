@@ -55,7 +55,9 @@
                 <main role="main" class="col-md-9 ml-sm-auto col-lg-11 pt-3 px-4">
                     <h3 style="color: #007BFF" class="title-p">
                         <span style="color: #2B2B2B">([[${user.getUsername()}]])</span> 检查项目跟踪数据
-                        <span class="adviceDrud btn btn-sm btn-primary"><a style="color: white" th:href="@{/patient/advieDrug/}+${user.getNumber()}">点击查看用药方案</a></span>
+                        <span class="adviceDrud btn btn-sm btn-primary">
+                            <a style="color: white" th:href="@{/patient/patients}">返回患者列表</a><span style="width: 5px ;color: white;display: inline-block;margin-left: 5px">|</span>
+                            <a style="color: white" th:href="@{/patient/advieDrug/}+${user.getNumber()}">点击查看用药方案</a></span>
                     </h3>
                     <div class="table-responsive">
                         <div style="color: red">[[${msg}]]</div>
@@ -96,20 +98,9 @@
         <!-- Bootstrap core JavaScript
         ================================================== -->
         <!-- Placed at the end of the document so the pages load faster -->
-        <!-- Placed at the end of the document so the pages load faster -->
-        <script type="text/javascript" th:src="@{/js/jquery-3.2.1.slim.min.js}"></script>
         <script type="text/javascript" th:src="@{/js/popper.min.js}"></script>
         <script type="text/javascript" th:src="@{/js/bootstrap.min.js}"></script>
 
-        <!-- Icons -->
-        <script type="text/javascript" th:src="@{/js/feather.min.js}"></script>
-        <script>
-            feather.replace()
-        </script>
-
-        <!-- Graphs -->
-        <!--<script type="text/javascript" src="../../static/js/Chart.min.js"></script>-->
-        <script type="text/javascript" th:src="@{/js/Chart.min.js}"></script>
         <script>
 
         </script>

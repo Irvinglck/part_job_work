@@ -4,6 +4,7 @@ import lombok.Data;
 import lombok.experimental.Accessors;
 
 import java.util.List;
+import java.util.Map;
 
 @Data
 @Accessors(chain = true)
@@ -13,7 +14,7 @@ public class PageInfo<T> {
     private int totalCount;//总记录数
     private int totalPage;//一共多少页
     private List<T> data;
-    private int[] navigatepageNums={1,2,3,4};
+    private List<QuickPage> quickMap;//快速跳转
     public PageInfo(int pageCurrent, int pageSize, List<T> data) {
         this.pageCurrent = pageCurrent;
         this.pageSize = pageSize;

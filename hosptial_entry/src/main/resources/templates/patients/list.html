@@ -107,19 +107,19 @@
                     <tr th:each="item:${patients}">
                         <td th:text="${item.getNumber()}"></td>
                         <td th:text="${item.getUsername()}"></td>
-<!--                        <td th:text="${item.getGender()=='0'?'男':'女'}"></td>-->
+                        <!--                        <td th:text="${item.getGender()=='0'?'男':'女'}"></td>-->
                         <td th:text="${item.getGender()}"></td>
                         <td th:text="${item.getAge()}"></td>
-<!--                        <td th:text="${item.getIsDiabetes()=='0'?'无':'有'}"></td>-->
+                        <!--                        <td th:text="${item.getIsDiabetes()=='0'?'无':'有'}"></td>-->
                         <td th:text="${item.getIsDiabetes()}"></td>
                         <td th:text="${item.getDiaAge()}"></td>
-<!--                        <td th:text="${item.getHighBlood()=='0'?'无':'有'}"></td>-->
+                        <!--                        <td th:text="${item.getHighBlood()=='0'?'无':'有'}"></td>-->
                         <td th:text="${item.getHighBlood()}"></td>
-<!--                        <td th:text="${item.getBoolFat()=='0'?'无':'有'}"></td>-->
+                        <!--                        <td th:text="${item.getBoolFat()=='0'?'无':'有'}"></td>-->
                         <td th:text="${item.getBoolFat()}"></td>
                         <td th:text="${item.getOpraType()}"></td>
                         <td th:text="${item.getReverseOpra()}"></td>
-<!--                        <td th:text="${item.getIsFirstOpra()=='0'?'不是':'是'}"></td>-->
+                        <!--                        <td th:text="${item.getIsFirstOpra()=='0'?'不是':'是'}"></td>-->
                         <td th:text="${item.getIsFirstOpra()}"></td>
                         <td th:text="${item.getOpraTime()}"></td>
                         <td th:text="${item.getRoomId()}"></td>
@@ -145,13 +145,21 @@
             <!--                </ul>-->
             <!--            </nav>-->
             <div class="row">
-                <div class="col-md-10">
-                    <h5>当前第<span>[[${pageInfo.pageCurrent }]]</span>页,总共<span>[[${pageInfo.totalPage }]]</span>页,总<span>[[${pageInfo.totalCount }]]</span>条记录
+                <div class="col-md-5">
+                    <h5>当前第<span>[[${pageInfo.pageCurrent}]]</span>页,总共<span>[[${pageInfo.totalPage }]]</span>页,总<span>[[${pageInfo.totalCount }]]</span>条记录
                     </h5>
                 </div>
-
+                <div class="col-md-5">
+                    <select style="width: 100px">
+                        <option>快速选择</option>
+<!--                        th:each="item:${maps}"-->
+                        <option th:each="item:${pageInfo.quickMap}"
+                              th:text="${item.pageDes}" th:value="${item.jumpPage}"></option>
+                    </select>
+                </div>
                 <div class="col-md-2">
                     <nav aria-label="Page navigation" class="nav-pagination">
+
                         <ul class="pagination">
                             <!--首页 和 上一页-->
                             <li>
@@ -172,15 +180,15 @@
                             <!--                            </th:if>-->
 
                             <!--迭代生成页码-->
-                            <!--                            <li style="overflow: hidden;">-->
+                            <!--                                                        <li>-->
 
-                            <!--                                <a th:each="i:${pageInfo.navigatepageNums}"-->
-                            <!--                                   th:href="@{/patients(pn=${i},pageSize=${10})}"-->
-                            <!--                                   th:text="${i}" class="btn btn-sm"-->
-                            <!--                                   data-th-classappend="${(pageInfo.pageCurrent) eq i} ? 'btn-primary' : ''">-->
-                            <!--                                </a>-->
+                            <!--                                                            <a th:each="i:${pageInfo.navigatepageNums}"-->
+                            <!--                                                               th:href="@{/patients(pn=${i},pageSize=${10})}"-->
+                            <!--                                                               th:text="${i}" class="btn btn-sm"-->
+                            <!--                                                               data-th-classappend="${(pageInfo.pageCurrent) eq i} ? 'btn-primary' : ''">-->
+                            <!--                                                            </a>-->
 
-                            <!--                            </li>-->
+                            <!--                                                        </li>-->
 
                             <!--下一页-->
                             <!--                            <th:if test="${pageInfo.hasNextPage }">-->
@@ -215,6 +223,12 @@
 </div>
 
 <script>
+
+    var select = document.querySelector('select');
+    select.onchange = function(){
+        window.location="http://localhost:8888/lyuan/patient/patients?pageCurrent="+this.value;
+    }
+
     function delPatient(id) {
         var flag = confirm("确认删除么");
         if (flag) {

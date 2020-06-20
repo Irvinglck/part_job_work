@@ -9,6 +9,7 @@ import com.lck.repository.PatientRepository;
 import com.lck.util.ConvertUtil;
 import com.lck.util.FileUtils;
 import com.lck.util.PageInfo;
+import com.lck.util.QuickPage;
 import org.omg.PortableInterceptor.INACTIVE;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -65,7 +66,9 @@ public class PatientContrllor {
         model.addAttribute("patients", patientList.getContent());
         model.addAttribute("pageInfo",
                 new PageInfo<>().setPageCurrent(pageCurrent).setPageSize(pageSize)
-                        .setTotalCount((int) patientList.getTotalElements()).setTotalPage(patientList.getTotalPages()));
+                        .setTotalCount((int) patientList.getTotalElements())
+                        .setTotalPage(patientList.getTotalPages())
+                        .setQuickMap(createMap(patientList.getTotalPages())));
         return "/patients/list";
     }
 
@@ -110,7 +113,10 @@ public class PatientContrllor {
         model.addAttribute("patients", patientList.getContent());
         model.addAttribute("pageInfo",
                 new PageInfo<>().setPageCurrent(pageCurrent).setPageSize(pageSize)
-                        .setTotalCount((int) patientList.getTotalElements()).setTotalPage(patientList.getTotalPages()));
+                        .setTotalCount((int) patientList.getTotalElements())
+                        .setTotalPage(patientList.getTotalPages())
+                        .setQuickMap(createMap(patientList.getTotalPages())));
+
         return "/patients/list";
     }
 
@@ -124,9 +130,23 @@ public class PatientContrllor {
         patientRepository.deleteById(id);
         patientDesRepository.delPatientDes(patient.getNumber());
 //        model.addAttribute("patients", patientRepository.findAll());
+        Page<Patient> patientList = findByPageAndParams(null,1,3);
+        model.addAttribute("patients", patientList.getContent());
+        model.addAttribute("pageInfo",
+                new PageInfo<>().setPageCurrent(1).setPageSize(3)
+                        .setTotalCount((int) patientList.getTotalElements())
+                        .setTotalPage(patientList.getTotalPages())
+                        .setQuickMap(createMap(patientList.getTotalPages())));
+
         return "/patients/list";
     }
-
+    private List<QuickPage> createMap(int totalPage){
+        List<QuickPage> result=new ArrayList<>();
+        for (int i = 0; i < totalPage; i++) {
+            result.add(new QuickPage().setPageDes("第"+(i+1)+"页").setJumpPage(String.valueOf(i+1)));
+        }
+        return result;
+    }
     //添加患者基础信息
     @PostMapping("/addPatient")
     public String addPatient(
@@ -135,26 +155,35 @@ public class PatientContrllor {
     ) {
         Patient save = patientRepository.save(patient);
         if (save != null) {
-            model.addAttribute("patients", patientRepository.findAll());
-            return "redirect:/list.html";
+            Page<Patient> patientList = findByPageAndParams(null,1,3);
+            model.addAttribute("patients", patientList.getContent());
+            model.addAttribute("pageInfo",
+                    new PageInfo<>().setPageCurrent(1).setPageSize(3)
+                            .setTotalCount((int) patientList.getTotalElements())
+                            .setTotalPage(patientList.getTotalPages())
+                            .setQuickMap(createMap(patientList.getTotalPages())));
+
+            return "/patients/list";
         } else {
             return "/patients/add";
         }
     }
 
-    //添加患者基础信息
+    //添加患者跟踪信息
     @PostMapping("/addPatientDes")
     public String addPatientDes(
             PatientDes patientDes,
             Model model
     ) {
         PatientDes des = patientDesRepository.findByNumber(patientDes.getNumber());
+        //已经有跟踪信息的追加
         if (des != null) {
             PatientDes combineBean = combineSydwCore(des, patientDes);
             patientDesRepository.save(combineBean.setNumber(des.getNumber()).setId(des.getId()));
             model.addAttribute("msg", "追加录入跟踪数据成功");
             return "/patients/add";
-        } else {
+        }//没有追踪信息的直接添加
+        else {
             PatientDes save = patientDesRepository.save(patientDes);
             if (save != null) {
                 model.addAttribute("msg", "添加录入跟踪数据成功");
@@ -188,7 +217,7 @@ public class PatientContrllor {
             targetField.setAccessible(true);
             try {
                 if (!(sourceField.get(source) == null) && !"serialVersionUID".equals(sourceField.getName().toString())) {
-                    targetField.set(target, sourceField.get(source) + "" + targetField.get(target));
+                    targetField.set(target, sourceField.get(source) + ",s" + targetField.get(target));
                 }
             } catch (IllegalArgumentException | IllegalAccessException e) {
                 e.printStackTrace();
@@ -205,10 +234,10 @@ public class PatientContrllor {
             Model model
     ) {
         PatientDes patientDes = patientDesRepository.findByNumber(number);
-        Patient patient = patientRepository.findByPatientNumber(patientDes.getNumber());
+        Patient patient = patientRepository.findByPatientNumber(number);
         if(patientDes==null){
             model.addAttribute("msg", "暂无跟踪信息");
-            model.addAttribute("maps", new HashMap<>());
+            model.addAttribute("maps", null);
             model.addAttribute("user", patient);
             return "/patients/detail";
         }
@@ -230,9 +259,11 @@ public class PatientContrllor {
             AdviceDrug adviceDrug = new AdviceDrug().setName(patient.getUsername());
             resutl.add(adviceDrug);
             model.addAttribute("adviceDrugs", resutl);
+            model.addAttribute("number", number);
             return "/patients/advice";
         } else {
             model.addAttribute("adviceDrugs", adviceDrugs);
+            model.addAttribute("number", number);
             return "/patients/advice";
         }
     }
