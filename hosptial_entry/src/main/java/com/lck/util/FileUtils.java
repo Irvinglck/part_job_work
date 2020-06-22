@@ -1,6 +1,7 @@
 package com.lck.util;
 
 import com.csvreader.CsvReader;
+import com.csvreader.CsvWriter;
 import com.lck.model.AdviceDrug;
 import com.lck.model.Patient;
 import com.lck.model.PatientDes;
@@ -14,6 +15,11 @@ import org.springframework.web.multipart.MultipartFile;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.lang.reflect.Field;
+import java.lang.reflect.Method;
+import java.nio.charset.Charset;
+import java.util.Collection;
+import java.util.Iterator;
 import java.util.List;
 
 @Component
@@ -165,4 +171,49 @@ public class FileUtils {
         }
         return save!=null?"入库成功":"入库失败";
     }
+    //写入文件
+    public static <T> void writeCSV(Collection<T> list, String csvFilePath, String[] csvHeaders) {
+        try {
+            // 定义路径，分隔符，编码
+            CsvWriter csvWriter = new CsvWriter(csvFilePath, ',', Charset.forName("gbk"));
+            // 写表头
+            csvWriter.writeRecord(csvHeaders);
+            // 写内容
+            //遍历集合
+            Iterator<T> it = list.iterator();
+            while (it.hasNext()) {
+                T t = (T) it.next();
+                //获取类属性
+                Field[] fields = t.getClass().getDeclaredFields();
+                String[] csvContent = new String[fields.length];
+                for (short i = 0; i < fields.length; i++) {
+                    Field field = fields[i];
+                    String fieldName = field.getName();
+                    String getMethodName = "get"
+                            + fieldName.substring(0, 1).toUpperCase()
+                            + fieldName.substring(1);
+                    try {
+                        Class tCls = t.getClass();
+                        Method getMethod = tCls.getMethod(getMethodName, new Class[]{});
+                        Object value = getMethod.invoke(t, new Object[]{});
+                        if (value == null) {
+                            continue;
+                        }
+                        //取值并赋给数组
+                        String textvalue = value.toString();
+                        csvContent[i] = textvalue;
+                    } catch (Exception e) {
+                        e.getStackTrace();
+                    }
+                }
+                //迭代插入记录
+                csvWriter.writeRecord(csvContent);
+            }
+            csvWriter.close();
+            System.out.println("<--------CSV文件写入成功-------->");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
 }

@@ -80,12 +80,13 @@
                                 <th>V13</th>
                                 <th>V14</th>
                                 <th>V15</th>
-<!--                                <th><a th:href="@{/page/toDetail1}">用药方案</a></th>-->
+                                <th style="width: 80px">编辑</th>
                             </tr>
                             </thead>
                             <tbody>
                                 <tr th:each="item:${maps}">
                                     <td th:each="entry: ${item}" th:text="${entry.value}"></td>
+                                    <td><a th:href="@{/patient/toEdit(number=${user.getNumber()},params=${item})}" class="bt btn-sm btn-info">修改</a></td>
                                 </tr>
                             </tbody>
                         </table>

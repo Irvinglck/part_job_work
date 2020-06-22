@@ -3,6 +3,7 @@ package com.lck.controllor;
 import com.lck.model.AdviceDrug;
 import com.lck.model.Patient;
 import com.lck.model.PatientDes;
+import com.lck.model.vo.ResponseVo;
 import com.lck.repository.AdviceDrugRepository;
 import com.lck.repository.PatientDesRepository;
 import com.lck.repository.PatientRepository;
@@ -11,6 +12,7 @@ import com.lck.util.FileUtils;
 import com.lck.util.PageInfo;
 import com.lck.util.QuickPage;
 import org.omg.PortableInterceptor.INACTIVE;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -33,6 +35,7 @@ import java.lang.reflect.Field;
 import java.lang.reflect.Modifier;
 import java.net.URLDecoder;
 import java.net.URLEncoder;
+import java.text.SimpleDateFormat;
 import java.util.*;
 
 @Controller
@@ -43,6 +46,9 @@ public class PatientContrllor {
     private PatientDesRepository patientDesRepository;
     private ConvertUtil convertUtil;
     private AdviceDrugRepository adviceDrugRepository;
+
+    private static final String[] CSV_HEADERS = {"编号", "姓名", "性别", "年龄", "糖尿病", "糖尿病病程", "高血压", "血脂异常", "手术方式", "修正手术", "首次手术", "手术日期", "住院号", "随访时间V", "PV", "CaV", "MgV", "NaV", "KV", "PTHV", "OH25DV", "CRPV", "FT3V", "FT4V", "TSHV", "FFAV", "ALPV", "ALTV", "ASTV", "BUNV", "CP0V", "CP120V", "INS0V", "INS120V", "ChV", "CrV", "FBGV", "HDLV", "HOMABV", "HOMAIRV", "HbV", "HbA1cV", "LDLV", "PBGV", "TGV", "WBCV", "rGTV", "GAV", "体重V", "腹内脂肪V", "尿酸V", "皮下脂肪V", "收缩压V", "舒张压V", "体重指数V", "臀围V", "腰臀比V", "腰围V"};
+
 
     @Autowired
     public PatientContrllor(PatientRepository patientRepository, FileUtils fileUtils, PatientDesRepository patientDesRepository,
@@ -57,12 +63,12 @@ public class PatientContrllor {
     //患者列表页面
     @GetMapping("/patients")
     public String login(
-            @RequestParam(name = "username" ,required = false) String name,
+            @RequestParam(name = "username", required = false) String name,
             @RequestParam(name = "pageCurrent", required = false, defaultValue = "1") Integer pageCurrent,
             @RequestParam(name = "pageSize", required = false, defaultValue = "3") Integer pageSize,
             Model model
     ) {
-        Page<Patient> patientList = findByPageAndParams(name,pageCurrent,pageSize);
+        Page<Patient> patientList = findByPageAndParams(name, pageCurrent, pageSize);
         model.addAttribute("patients", patientList.getContent());
         model.addAttribute("pageInfo",
                 new PageInfo<>().setPageCurrent(pageCurrent).setPageSize(pageSize)
@@ -73,8 +79,8 @@ public class PatientContrllor {
     }
 
     private Page<Patient> findByPageAndParams(String name, Integer pageCurrent, Integer pageSize) {
-        Specification<Patient> specification=null;
-        if(!StringUtils.isEmpty(name)){
+        Specification<Patient> specification = null;
+        if (!StringUtils.isEmpty(name)) {
             //查询条件存在这个对象中
             specification = new Specification<Patient>() {
                 //重新Specification的toPredicate方法
@@ -105,11 +111,11 @@ public class PatientContrllor {
     @GetMapping("/findByName")
     public String findByName(
             @RequestParam(name = "username") String name,
-            @RequestParam(name = "pageCurrent",required = false,defaultValue = "1") Integer pageCurrent,
-            @RequestParam(name = "pageSize",required = false,defaultValue = "3") Integer pageSize,
+            @RequestParam(name = "pageCurrent", required = false, defaultValue = "1") Integer pageCurrent,
+            @RequestParam(name = "pageSize", required = false, defaultValue = "3") Integer pageSize,
             Model model
     ) {
-        Page<Patient> patientList = findByPageAndParams(name,pageCurrent,pageSize);
+        Page<Patient> patientList = findByPageAndParams(name, pageCurrent, pageSize);
         model.addAttribute("patients", patientList.getContent());
         model.addAttribute("pageInfo",
                 new PageInfo<>().setPageCurrent(pageCurrent).setPageSize(pageSize)
@@ -130,7 +136,7 @@ public class PatientContrllor {
         patientRepository.deleteById(id);
         patientDesRepository.delPatientDes(patient.getNumber());
 //        model.addAttribute("patients", patientRepository.findAll());
-        Page<Patient> patientList = findByPageAndParams(null,1,3);
+        Page<Patient> patientList = findByPageAndParams(null, 1, 3);
         model.addAttribute("patients", patientList.getContent());
         model.addAttribute("pageInfo",
                 new PageInfo<>().setPageCurrent(1).setPageSize(3)
@@ -140,13 +146,15 @@ public class PatientContrllor {
 
         return "/patients/list";
     }
-    private List<QuickPage> createMap(int totalPage){
-        List<QuickPage> result=new ArrayList<>();
+
+    private List<QuickPage> createMap(int totalPage) {
+        List<QuickPage> result = new ArrayList<>();
         for (int i = 0; i < totalPage; i++) {
-            result.add(new QuickPage().setPageDes("第"+(i+1)+"页").setJumpPage(String.valueOf(i+1)));
+            result.add(new QuickPage().setPageDes("第" + (i + 1) + "页").setJumpPage(String.valueOf(i + 1)));
         }
         return result;
     }
+
     //添加患者基础信息
     @PostMapping("/addPatient")
     public String addPatient(
@@ -155,7 +163,7 @@ public class PatientContrllor {
     ) {
         Patient save = patientRepository.save(patient);
         if (save != null) {
-            Page<Patient> patientList = findByPageAndParams(null,1,3);
+            Page<Patient> patientList = findByPageAndParams(null, 1, 3);
             model.addAttribute("patients", patientList.getContent());
             model.addAttribute("pageInfo",
                     new PageInfo<>().setPageCurrent(1).setPageSize(3)
@@ -217,7 +225,7 @@ public class PatientContrllor {
             targetField.setAccessible(true);
             try {
                 if (!(sourceField.get(source) == null) && !"serialVersionUID".equals(sourceField.getName().toString())) {
-                    targetField.set(target, sourceField.get(source) + ",s" + targetField.get(target));
+                    targetField.set(target, sourceField.get(source) + "" + targetField.get(target));
                 }
             } catch (IllegalArgumentException | IllegalAccessException e) {
                 e.printStackTrace();
@@ -235,7 +243,7 @@ public class PatientContrllor {
     ) {
         PatientDes patientDes = patientDesRepository.findByNumber(number);
         Patient patient = patientRepository.findByPatientNumber(number);
-        if(patientDes==null){
+        if (patientDes == null) {
             model.addAttribute("msg", "暂无跟踪信息");
             model.addAttribute("maps", null);
             model.addAttribute("user", patient);
@@ -286,6 +294,15 @@ public class PatientContrllor {
             ListResult.add(result);
         }
         return ListResult;
+    }
+
+    @GetMapping("/toEdit")
+    public String editItem(HttpServletRequest request,
+                           Model model) {
+        String params = request.getParameter("params");
+        String number = request.getParameter("number");
+
+        return null;
     }
 
     private String getMappingField(String key) {
@@ -358,15 +375,15 @@ public class PatientContrllor {
         //上传的文件都是保存在D:\fileupload\目录下的子目录当中
         String fileSaveRootPath = "D:\\fileupload\\";
         //得到要下载的文件
-        File file = new File(fileSaveRootPath + "\\" + fileName);
+        File file = new File(fileSaveRootPath);
         //如果文件不存在
         if (!file.exists()) {
             model.addAttribute("msg", "您要下载的资源已被删除！！");
         }
         //处理文件名
-        String realname = fileName.substring(fileName.indexOf("_") + 1);
+//        String realname = fileName.substring(fileName.indexOf("_") + 1);
         //设置响应头，控制浏览器下载该文件
-        response.setHeader("content-disposition", "attachment;filename=" + URLEncoder.encode(realname, "UTF-8"));
+        response.setHeader("content-disposition", "attachment;filename=" + URLEncoder.encode(fileName, "UTF-8"));
         //读取要下载的文件，保存到文件输入流
         FileInputStream in = new FileInputStream(fileSaveRootPath + "\\" + fileName);
         //创建输出流
@@ -383,7 +400,66 @@ public class PatientContrllor {
         in.close();
         //关闭输出流
         out.close();
+    }
+
+
+    //导出数据
+    @GetMapping("/exportRecFile")
+    @ResponseBody
+    public String exportRecFile(HttpServletResponse response) {
+        List<Patient> PatientList = patientRepository.findAll();
+        List<ResponseVo> result = new LinkedList<>();
+        for (Patient patient : PatientList) {
+            ResponseVo vo = new ResponseVo();
+            PatientDes patientDes = patientDesRepository.findByNumber(patient.getNumber());
+            if (patientDes == null)
+                continue;
+            BeanUtils.copyProperties(patient, vo);
+            BeanUtils.copyProperties(patientDes, vo);
+            result.add(vo);
+        }
+        String path = createPath();
+        FileUtils.writeCSV(result, path, CSV_HEADERS);
+
+        try {
+            //设置响应头，控制浏览器下载该文件
+            response.setHeader("content-disposition", "attachment;filename=" + URLEncoder.encode("csv_export.csv", "UTF-8"));
+
+            //读取要下载的文件，保存到文件输入流
+            FileInputStream in = new FileInputStream(path);
+            //创建输出流
+            OutputStream out = response.getOutputStream();
+            //创建缓冲区
+            byte buffer[] = new byte[1024];
+            int len = 0;
+            //循环将输入流中的内容读取到缓冲区当中
+            while ((len = in.read(buffer)) > 0) {
+                //输出缓冲区的内容到浏览器，实现文件下载
+                out.write(buffer, 0, len);
+            }
+            //关闭文件输入流
+            in.close();
+            //关闭输出流
+            out.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return "/patients/filedata";
+    }
+
+    private void downloadBrower(String realname, String localPath, HttpServletResponse response) throws IOException {
 
     }
+
+    private String createPath() {
+        String filepath = "D:\\csv_export\\";
+        File dirfile = new File(filepath);
+        if (!dirfile.exists()) {
+            dirfile.mkdirs();
+        }
+        String fileName = "csv_export.csv"; //  csv_export.csv
+        return filepath + fileName;
+    }
+
 
 }
