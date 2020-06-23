@@ -6,13 +6,11 @@ import com.lck.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpSession;
 
 @Controller
-//@RequestMapping("/doc")
 public class DoctorControllor {
     private UserRepository userRepository;
     private PatientRepository patientRepository;

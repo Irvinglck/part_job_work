@@ -107,7 +107,6 @@ public class PatientDes {
     @Column(length =100)
     private String waistV;//腰围V1
 
-//    private List<AdviceDrug> adviceDrugs;
 
 
 }

@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<!-- saved from url=(0052)http://getbootstrap.com/docs/4.0/examples/dashboard/ -->
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>上海六院患者管理后台</title>
+    <!-- Bootstrap core CSS -->
+    <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet">
+    <!-- Custom styles for this template -->
+    <link th:href="@{/css/dashboard.css}" rel="stylesheet">
+    <script type="text/javascript" th:src="@{/js/jquery.min.js}"></script>
+    <script type="text/javascript" th:src="@{/js/popper.min.js}"></script>
+    <script type="text/javascript" th:src="@{/js/bootstrap.min.js}"></script>
+
+    <script type="text/javascript" th:src="@{/js/bootstrap-paginator.js}"></script>
+    <style type="text/css">
+        /* Chart.js */
+        @-webkit-keyframes chartjs-render-animation {
+            from {
+                opacity: 0.99
+            }
+            to {
+                opacity: 1
+            }
+        }
+
+        @keyframes chartjs-render-animation {
+            from {
+                opacity: 0.99
+            }
+            to {
+                opacity: 1
+            }
+        }
+
+        .chartjs-render-monitor {
+            -webkit-animation: chartjs-render-animation 0.001s;
+            animation: chartjs-render-animation 0.001s;
+        }
+
+        .warp {
+            height: 45px;
+
+        }
+
+        .form-group > input, div {
+            text-align: center;
+
+        }
+
+        .form-group > div {
+            font-weight: 700;
+
+        }
+
+        .add-patient {
+            float: left;
+            display: inline-block;
+        }
+
+        /*.pagination{float: right}*/
+        .col-md-10 span {
+            color: #007BFF;
+        }
+        .title-p>p{
+            display: inline-block;
+        }
+        .title-p .adviceDrud{
+            display: inline-block;
+            float: right;
+        }
+    </style>
+</head>
+
+<body>
+<div th:replace="~{commons/common::topbar}"></div>
+
+<div class="container-fluid">
+    <div class="row">
+        <div th:replace="~{commons/common::sidebar(active='list.html')}"></div>
+        <main role="main" class="col-md-9 ml-sm-auto col-lg-11 pt-3 px-4">
+            <h3  class="title-p">
+                <span style="color: black;display: inline-block;float: left">([[${patient.getUsername()}]])
+                    <span style="color: #007BFF">&nbsp跟踪数据V值修改</span></span>
+                <span class="adviceDrud btn btn-sm btn-primary" style="margin-right: 80px">
+                            <a style="color: white"
+                               th:href="@{/patient/toDetail/}+${patient.getNumber()}">返回跟踪数据列表</a></span>
+            </h3>
+            <div class="table-responsive" style="border-bottom: 1px #DEE2E6 solid;margin-top: 10px">
+                <form th:action="@{/patient/editPatient}" method="POST">
+                    <div class="form-row" style="width: 95%">
+                        <div class="form-group col-md-6">
+                            <div>患者编号</div>
+                            <input type="text" name="number" readonly="true"  th:value="${vModel.number}" class="form-control">
+                        </div>
+                        <div class="form-group col-md-6">
+                            <div>V1</div>
+                            <input type="text"  name="V1" th:value="${vModel.V1}" class="form-control">
+                        </div>
+                    </div>
+                    <div class="form-row" style="width: 95%">
+                        <div class="form-group col-md-6">
+                            <div>V2</div>
+                            <input type="text" name="V2" th:value="${vModel.V2}" class="form-control">
+                        </div>
+                        <div class="form-group col-md-6">
+                            <div>V3</div>
+                            <input type="text" name="V3" th:value="${vModel.V3}" class="form-control">
+                        </div>
+                    </div>
+                    <div class="form-row" style="width: 95%">
+                        <div class="form-group col-md-6">
+                            <div>V4</div>
+                            <input type="text" name="V4" th:value="${vModel.V4}" class="form-control">
+                        </div>
+                        <div class="form-group col-md-6">
+                            <div>V5</div>
+                            <input type="text" name="V5" th:value="${vModel.V5}" class="form-control">
+                        </div>
+                    </div>
+                    <div class="form-row" style="width: 95%">
+                        <div class="form-group col-md-6">
+                            <div>V6</div>
+                            <input type="text" name="V6" th:value="${vModel.V6}" class="form-control">
+                        </div>
+                        <div class="form-group col-md-6">
+                            <div>V7</div>
+                            <input type="text" name="V7" th:value="${vModel.V7}" class="form-control">
+                        </div>
+                    </div>
+                    <div class="form-row" style="width: 95%">
+                        <div class="form-group col-md-6">
+                            <div>V8</div>
+                            <input type="text" name="V8" th:value="${vModel.V8}" class="form-control">
+                        </div>
+                        <div class="form-group col-md-6">
+                            <div>V9</div>
+                            <input type="text" name="V9" th:value="${vModel.V9}" class="form-control">
+                        </div>
+                    </div>
+                    <div class="form-row" style="width: 95%">
+                        <div class="form-group col-md-6">
+                            <div>V10</div>
+                            <input type="text" name="V10" th:value="${vModel.V10}" class="form-control">
+                        </div>
+                        <div class="form-group col-md-6">
+                            <div>V11</div>
+                            <input type="text" name="V11" th:value="${vModel.V11}" class="form-control">
+                        </div>
+                    </div>
+                    <div class="form-row" style="width: 95%">
+                        <div class="form-group col-md-6">
+                            <div>V12</div>
+                            <input type="text" name="V12" th:value="${vModel.V12}" class="form-control">
+                        </div>
+                        <div class="form-group col-md-6">
+                            <div>V13</div>
+                            <input type="text" name="V13" th:value="${vModel.V13}" class="form-control">
+                        </div>
+                    </div>
+                    <div class="form-row" style="width: 95%">
+                        <div class="form-group col-md-6">
+                            <div>V14</div>
+                            <input type="text" name="V14" th:value="${vModel.V14}" class="form-control">
+                        </div>
+                        <div class="form-group col-md-6">
+                            <div>V15</div>
+                            <input type="text" name="V15" th:value="${vModel.V15}" class="form-control">
+                        </div>
+                    </div>
+                    <div class="form-row" style="width: 95%">
+                        <div class="form-group col-md-6">
+                            <input type="hidden" name="V0" th:value="${vModel.V0}" class="form-control">
+                        </div>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary">[[${vModel.V0}]]修改</button>
+                </form>
+            </div>
+
+        </main>
+
+    </div>
+
+</div>
+
+<script>
+
+
+</script>
+
+</body>
+
+</html>

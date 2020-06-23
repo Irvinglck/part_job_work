@@ -72,7 +72,9 @@
                         <input type="hidden" name="grade" th:value="${session.user.getGrade()}" />
                         <span class="help-block alertp att">注意:请上传CSV格式文件</span>
                     </div>
-                    <a th:href="@{/patient/fileDown}" class="btn btn-primary">下载模板</a>
+                    <a th:href="@{/patient/exportRecFile}" class="btn btn-danger">导出患者数据</a>
+                    <a th:href="@{/patient/fileTemp(fileType='advice')}" class="btn btn-success">用药方案模板</a>
+                    <a th:href="@{/patient/fileTemp(fileType='trackImformation')}" class="btn btn-success">跟踪信息模板</a>
                     <button type="submit" class="btn btn-primary">上传文件</button>
                 </form>
             </div>
@@ -83,17 +85,8 @@
 
 <!-- Bootstrap core JavaScript
 ================================================== -->
-<!-- Placed at the end of the document so the pages load faster -->
-<!-- Placed at the end of the document so the pages load faster -->
-<script type="text/javascript" th:src="@{/js/jquery-3.2.1.slim.min.js}"></script>
 <script type="text/javascript" th:src="@{/js/popper.min.js}"></script>
 <script type="text/javascript" th:src="@{/js/bootstrap.min.js}"></script>
-
-<!-- Icons -->
-<script type="text/javascript" th:src="@{/js/feather.min.js}"></script>
-<script>
-    feather.replace()
-</script>
 
 <!-- Graphs -->
 <!--<script type="text/javascript" src="../../static/js/Chart.min.js"></script>-->

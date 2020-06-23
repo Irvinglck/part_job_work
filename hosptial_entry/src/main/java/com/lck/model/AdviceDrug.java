@@ -15,6 +15,7 @@ public class AdviceDrug {
     private Integer id;
     @Column(length =50,name = "number")
     private String number;
+
     @Column(length =50)
     private String name;//姓名
     @Column(length = 5)

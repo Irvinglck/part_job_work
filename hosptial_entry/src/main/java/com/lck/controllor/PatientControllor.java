@@ -1,8 +1,11 @@
 package com.lck.controllor;
 
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONObject;
 import com.lck.model.AdviceDrug;
 import com.lck.model.Patient;
 import com.lck.model.PatientDes;
+import com.lck.model.VModel;
 import com.lck.model.vo.ResponseVo;
 import com.lck.repository.AdviceDrugRepository;
 import com.lck.repository.PatientDesRepository;
@@ -11,36 +14,31 @@ import com.lck.util.ConvertUtil;
 import com.lck.util.FileUtils;
 import com.lck.util.PageInfo;
 import com.lck.util.QuickPage;
-import org.omg.PortableInterceptor.INACTIVE;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Controller;
-import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.util.CollectionUtils;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
-import javax.persistence.Column;
 import javax.persistence.criteria.*;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.*;
 import java.lang.reflect.Field;
 import java.lang.reflect.Modifier;
-import java.net.URLDecoder;
 import java.net.URLEncoder;
-import java.text.SimpleDateFormat;
 import java.util.*;
+import java.util.concurrent.atomic.AtomicReference;
 
 @Controller
 @RequestMapping("/patient")
-public class PatientContrllor {
+public class PatientControllor {
     private PatientRepository patientRepository;
     private FileUtils fileUtils;
     private PatientDesRepository patientDesRepository;
@@ -51,8 +49,8 @@ public class PatientContrllor {
 
 
     @Autowired
-    public PatientContrllor(PatientRepository patientRepository, FileUtils fileUtils, PatientDesRepository patientDesRepository,
-                            ConvertUtil convertUtil, AdviceDrugRepository adviceDrugRepository) {
+    public PatientControllor(PatientRepository patientRepository, FileUtils fileUtils, PatientDesRepository patientDesRepository,
+                             ConvertUtil convertUtil, AdviceDrugRepository adviceDrugRepository) {
         this.patientRepository = patientRepository;
         this.fileUtils = fileUtils;
         this.patientDesRepository = patientDesRepository;
@@ -204,6 +202,7 @@ public class PatientContrllor {
     }
 
 
+
     private PatientDes combineSydwCore(PatientDes source, PatientDes target) {
         Class sourceBeanClass = source.getClass();
         Class targetBeanClass = target.getClass();
@@ -256,69 +255,94 @@ public class PatientContrllor {
         return "/patients/detail";
     }
 
-    //查看用药方案
-    @GetMapping("/advieDrug/{number}")
-    public String adviceDrug(@PathVariable String number,
-                             Model model) {
-        List<AdviceDrug> adviceDrugs = adviceDrugRepository.findByNumber(number);
-        if (CollectionUtils.isEmpty(adviceDrugs)) {
-            Patient patient = patientRepository.findByPatientNumber(number);
-            List<AdviceDrug> resutl = new ArrayList<>();
-            AdviceDrug adviceDrug = new AdviceDrug().setName(patient.getUsername());
-            resutl.add(adviceDrug);
-            model.addAttribute("adviceDrugs", resutl);
-            model.addAttribute("number", number);
-            return "/patients/advice";
-        } else {
-            model.addAttribute("adviceDrugs", adviceDrugs);
-            model.addAttribute("number", number);
-            return "/patients/advice";
-        }
-    }
+//    //查看用药方案
+//    @GetMapping("/advieDrug/{number}")
+//    public String adviceDrug(@PathVariable String number,
+//                             Model model) {
+//        List<AdviceDrug> adviceDrugs = adviceDrugRepository.findByNumber(number);
+//        if (CollectionUtils.isEmpty(adviceDrugs)) {
+//            Patient patient = patientRepository.findByPatientNumber(number);
+//            List<AdviceDrug> resutl = new ArrayList<>();
+//            AdviceDrug adviceDrug = new AdviceDrug().setName(patient.getUsername());
+//            resutl.add(adviceDrug);
+//            model.addAttribute("adviceDrugs", resutl);
+//            model.addAttribute("number", number);
+//            return "/patients/advice";
+//        } else {
+//            model.addAttribute("adviceDrugs", adviceDrugs);
+//            model.addAttribute("number", number);
+//            return "/patients/advice";
+//        }
+//    }
 
-    private List<Map<String, String>> convertToMap(PatientDes patientDes) {
-        Map<String, Object> stringObjectMap = convertUtil.entityToMap(patientDes);
-        StringBuilder sb = new StringBuilder();
-        stringObjectMap.forEach((k, v) -> {
-            sb.append(k + "," + v + ";");
-        });
-        String[] values = sb.toString().split("\\;");
-        List<Map<String, String>> ListResult = new LinkedList<>();
-        for (int i = 0; i < values.length; i++) {
-            Map<String, String> result = new TreeMap<>();
-            String[] items = values[i].split("\\,");
-            int k = 0;
-            for (int j = 0; j < items.length; j++) {
-                result.put("V" + (k++), getMappingField(items[j]) != null ? getMappingField(items[j]) : items[j]);
-            }
-            ListResult.add(result);
-        }
-        return ListResult;
-    }
 
+    //跳转修改页面
     @GetMapping("/toEdit")
     public String editItem(HttpServletRequest request,
                            Model model) {
-        String params = request.getParameter("params");
+        String vMode = request.getParameter("params");
+        String substring = vMode.substring(1, vMode.length() - 1);
+        String[] split = substring.split(",");
+        Map<String, Object> result = new HashMap<>();
+        for (int i = 0; i < split.length; i++) {
+            String[] split1 = split[i].split("=");
+            result.put(split1[0].trim(), split1[1].trim());
+        }
         String number = request.getParameter("number");
-
-        return null;
+        result.put("number", number);
+        VModel vModel = JSON.parseObject(JSON.toJSONString(result), VModel.class);
+        model.addAttribute("vModel", vModel);
+        model.addAttribute("patient", patientRepository.findByPatientNumber(number));
+        return "/patients/delEdit";
     }
+    //数据V值修改
+    @PostMapping("/editPatient")
+    private String editPatient(VModel vModel, Model model) {
+        if (vModel == null) {
+            model.addAttribute("msg", "无修改V值");
+            return "/patient/delEdit";
+        }
+        PatientDes patientDes = patientDesRepository.findByNumber(vModel.getNumber());
+        StringBuilder sb = new StringBuilder();
+        sb.append(vModel.getV1())
+                .append(",").append(vModel.getV2())
+                .append(",").append(vModel.getV3())
+                .append(",").append(vModel.getV4())
+                .append(",").append(vModel.getV5())
+                .append(",").append(vModel.getV6())
+                .append(",").append(vModel.getV7())
+                .append(",").append(vModel.getV8())
+                .append(",").append(vModel.getV9())
+                .append(",").append(vModel.getV10())
+                .append(",").append(vModel.getV11())
+                .append(",").append(vModel.getV12())
+                .append(",").append(vModel.getV13())
+                .append(",").append(vModel.getV14())
+                .append(",").append(vModel.getV15());
 
-    private String getMappingField(String key) {
-        Map<String, String> mapTable = new HashMap<>();
-        mapTable.put("weightV", "体重");
-        mapTable.put("fatV", "腹内脂肪");
-        mapTable.put("acidV", "尿酸");
-        mapTable.put("skinFatV", "皮下脂肪");
-        mapTable.put("pressureV", "收缩压");
-        mapTable.put("disPressureV", "舒张压");
-        mapTable.put("bodyIndexV", "体重指数");
-        mapTable.put("hiplineV", "臀围");
-        mapTable.put("hipRatioV", "腰臀比");
-        mapTable.put("waistV", "腰围");
-        mapTable.put("followUpTimeV", "随访时间");
-        return mapTable.get(key);
+        try {
+            //属性
+            String field =  getMappingField1(vModel.getV0())!=null?getMappingField1(vModel.getV0()):vModel.getV0();
+
+            Field fieldDec = patientDes.getClass().getDeclaredField(field);
+            fieldDec.setAccessible(true);
+            fieldDec.set(patientDes,sb.toString());
+
+        } catch (NoSuchFieldException | IllegalAccessException e) {
+            e.printStackTrace();
+        }
+
+        patientDesRepository.save(patientDes);
+
+
+
+        model.addAttribute("user",patientRepository.findByPatientNumber(vModel.getNumber()));
+
+        List<Map<String, String>> maps = convertToMap(patientDes);
+
+        model.addAttribute("maps", maps);
+
+        return "/patients/detail";
     }
 
     //上传文件
@@ -447,9 +471,6 @@ public class PatientContrllor {
         return "/patients/filedata";
     }
 
-    private void downloadBrower(String realname, String localPath, HttpServletResponse response) throws IOException {
-
-    }
 
     private String createPath() {
         String filepath = "D:\\csv_export\\";
@@ -460,6 +481,55 @@ public class PatientContrllor {
         String fileName = "csv_export.csv"; //  csv_export.csv
         return filepath + fileName;
     }
+    private List<Map<String, String>> convertToMap(PatientDes patientDes) {
+        Map<String, Object> stringObjectMap = convertUtil.entityToMap(patientDes);
+        StringBuilder sb = new StringBuilder();
+        stringObjectMap.forEach((k, v) -> {
+            sb.append(k + "," + v + ";");
+        });
+        String[] values = sb.toString().split("\\;");
+        List<Map<String, String>> ListResult = new LinkedList<>();
+        for (int i = 0; i < values.length; i++) {
 
+            Map<String, String> result = new TreeMap<>(Comparator.comparingInt(a -> Integer.parseInt(a.substring(1))));
+            String[] items = values[i].split("\\,");
+            int k = 0;
+            for (int j = 0; j < items.length; j++) {
+                result.put("V" + (k++), getMappingField(items[j]) != null ? getMappingField(items[j]) : items[j]);
+            }
+            ListResult.add(result);
+        }
+        return ListResult;
+    }
+    private String getMappingField(String key) {
+        Map<String, String> mapTable = new HashMap<>();
+        mapTable.put("weightV", "体重");
+        mapTable.put("fatV", "腹内脂肪");
+        mapTable.put("acidV", "尿酸");
+        mapTable.put("skinFatV", "皮下脂肪");
+        mapTable.put("pressureV", "收缩压");
+        mapTable.put("disPressureV", "舒张压");
+        mapTable.put("bodyIndexV", "体重指数");
+        mapTable.put("hiplineV", "臀围");
+        mapTable.put("hipRatioV", "腰臀比");
+        mapTable.put("waistV", "腰围");
+        mapTable.put("followUpTimeV", "随访时间");
+        return mapTable.get(key);
+    }
 
+    private String getMappingField1(String key) {
+        Map<String, String> mapTable = new HashMap<>();
+        mapTable.put("体重", "weightV");
+        mapTable.put("腹内脂肪", "fatV");
+        mapTable.put("尿酸", "acidV");
+        mapTable.put("皮下脂肪", "skinFatV");
+        mapTable.put("收缩压", "pressureV");
+        mapTable.put("舒张压", "disPressureV");
+        mapTable.put("体重指数", "bodyIndexV");
+        mapTable.put("臀围", "hiplineV");
+        mapTable.put("腰臀比", "hipRatioV");
+        mapTable.put("腰围", "waistV");
+        mapTable.put("随访时间", "followUpTimeV");
+        return mapTable.get(key);
+    }
 }

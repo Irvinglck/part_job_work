@@ -10,9 +10,9 @@
 
     <title>上海六院患者管理后台</title>
     <!-- Bootstrap core CSS -->
-    <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet">
+    <link th:href="@{/static/css/bootstrap.min.css}" rel="stylesheet">
     <!-- Custom styles for this template -->
-    <link th:href="@{/css/dashboard.css}" rel="stylesheet">
+    <link th:href="@{/static/css/dashboard.css}" rel="stylesheet">
     <style type="text/css">
         /* Chart.js */
         @-webkit-keyframes chartjs-render-animation {
@@ -59,22 +59,30 @@
                         <table class="table table-striped table-sm">
                             <thead>
                             <tr>
+                                <th>V值(1-15)</th>
                                 <th>胰岛素类（数量/种类）</th>
                                 <th>口服降糖药类（数量/种类）</th>
                                 <th>降压药（数量/种类）</th>
                                 <th>调脂类药（数量/种类）</th>
                                 <th>其它药物</th>
                                 <th>备注说明</th>
+                                <th>操作</th>
                             </tr>
                             </thead>
                             <tbody>
                                 <tr th:each="item: ${adviceDrugs}">
+                                    <td th:text="${item.getMethod()}"></td>
                                     <td th:text="${item.getInsulinQuaType()}"></td>
                                     <td th:text="${item.getMouthDrugQuaType()}"></td>
                                     <td th:text="${item.getDownBloodQuaType()}"></td>
                                     <td th:text="${item.getRegulatingDrugsQuaType()}"></td>
                                     <td th:text="${item.getElseDrugs()}"></td>
                                     <td th:text="${item.getDes()}"></td>
+                                    <td>
+                                        <a class="btn btn-sm btn-primary" th:href="@{#}">添加</a>
+                                        <a class="btn btn-sm btn-info" th:href="@{#}">修改</a>
+                                        <a class="btn btn-sm btn-danger" th:href="@{#}">删除</a>
+                                    </td>
                                 </tr>
                             </tbody>
                         </table>
@@ -84,8 +92,8 @@
             </div>
         </div>
 
-        <script type="text/javascript" th:src="@{/js/popper.min.js}"></script>
-        <script type="text/javascript" th:src="@{/js/bootstrap.min.js}"></script>
+        <script type="text/javascript" th:src="@{/static/js/popper.min.js}"></script>
+        <script type="text/javascript" th:src="@{/static/js/bootstrap.min.js}"></script>
 
 
 
