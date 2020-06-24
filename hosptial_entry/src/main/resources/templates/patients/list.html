@@ -73,8 +73,8 @@
         <div th:replace="~{commons/common::sidebar(active='list.html')}"></div>
         <main role="main" class="col-md-9 ml-sm-auto col-lg-11 pt-3 px-4">
             <div class="warp">
-                <span class="add-patient"><a class="btn btn-sm btn-primary"
-                                             th:href="@{/page/addPatient}">录入患者信息</a></span>
+                <span class="add-patient"><a class="btn btn-sm btn-info"
+                                             th:href="@{/page/addPatient}">添加患者</a></span>
                 <span class="search-form">
                     <form th:action="@{/patient/patients}">
                         <input style="width: 260px; height: 33px" name="username" id="patient" type="text"
@@ -124,9 +124,10 @@
                         <td th:text="${item.getOpraTime()}"></td>
                         <td th:text="${item.getRoomId()}"></td>
                         <td>
+                            <a class="btn btn-sm btn-info"
+                               th:href="@{/patient/addDes/}+${item.getNumber()}">添加V值</a>
                             <a class="btn btn-sm btn-primary"
-                               th:href="@{/patient/toDetail/}+${item.getNumber()}">详情信息</a>
-                            <!--                                <a class="btn btn-sm btn-danger" th:href="@{/patient/delPatient/}+${item.getId()}">删除</a>-->
+                               th:href="@{/patient/toDetail/}+${item.getNumber()}">V值详情</a>
                             <input style="margin-right: -10px" class="btn btn-sm btn-danger" type="button"
                                    th:onclick="'javascript:delPatient(\''+${item.getId()}+'\');'" value="删除"/>
                         </td>
@@ -134,16 +135,7 @@
                     </tbody>
                 </table>
             </div>
-            <!--            <nav aria-label="Page navigation" class="nav-pagination">-->
 
-            <!--                <ul class="pagination"  style="margin-top: 10px">-->
-            <!--                    <li class="page-item"><a class="page-link" href="#">上一页</a></li>-->
-            <!--                    <li class="page-item"><a class="page-link" href="#">1</a></li>-->
-            <!--                    <li class="page-item active"><a class="page-link" href="#">2</a></li>-->
-            <!--                    <li class="page-item"><a class="page-link" href="#">3</a></li>-->
-            <!--                    <li class="page-item"><a class="page-link" href="#">下一页</a></li>-->
-            <!--                </ul>-->
-            <!--            </nav>-->
             <div class="row">
                 <div class="col-md-5">
                     <h5>当前第<span>[[${pageInfo.pageCurrent}]]</span>页,总共<span>[[${pageInfo.totalPage }]]</span>页,总<span>[[${pageInfo.totalCount }]]</span>条记录

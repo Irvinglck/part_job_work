@@ -2,18 +2,19 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cd574323-8f51-4bd7-9765-51233a9d3354" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/suggestions/addAdvice.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/suggestions/editAdvice.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/back/add.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/patients/addDes.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/lck/config/WebMvcConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/lck/config/WebMvcConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/lck/controllor/AdviceControllor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/lck/controllor/AdviceControllor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/lck/controllor/PageControllor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/lck/controllor/PageControllor.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/lck/controllor/PatientControllor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/lck/controllor/PatientControllor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/patients/add.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/patients/add.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/templates/patients/detail.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/patients/detail.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/suggestions/advice.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/suggestions/advice.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/patients/list.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/patients/list.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/suggestions/addAdvice.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/suggestions/addAdvice.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/lck/MainTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/lck/MainTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/lck/config/WebMvcConfig.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/lck/config/WebMvcConfig.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/lck/controllor/PageControllor.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/lck/controllor/PageControllor.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/templates/patients/detail.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/patients/detail.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/patients/list.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/patients/list.html" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -65,19 +66,19 @@
     <property name="restartRequiresConfirmation" value="false" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\luoPe\Desktop\part_job\pro\hosptial\part_job_work\hosptial_entry\src\main\resources\templates\suggestions" />
-      <recent name="C:\Users\luoPe\Desktop\part_job\pro\hosptial\part_job_work\hosptial_entry\src\main\resources" />
-      <recent name="C:\Users\luoPe\Desktop\part_job\pro\hosptial\part_job_work\hosptial_entry\src\main\resources\templates\patients" />
-      <recent name="C:\Users\luoPe\Desktop\part_job\pro\hosptial\part_job_work\hosptial_entry\src\main\resources\templates\back" />
-      <recent name="C:\Users\luoPe\Desktop\part_job\pro\hosptial\part_job_work\hosptial_entry\src\main\resources\templates\advice" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\luoPe\Desktop\part_job\pro\hosptial\part_job_work\hosptial_entry\src\main\resources\templates\back" />
       <recent name="C:\Users\luoPe\Desktop\part_job\pro\hosptial\part_job_work\hosptial_entry\src\main\java\com\lck\controllor" />
       <recent name="C:\Users\Administrator\Desktop\part_job\pro\part_job_work\hosptial_entry\src\main\resources\static\file" />
       <recent name="C:\Users\luoPe\Desktop\part_job\pro\hosptial\part_job_work\hosptial_entry\src\main\resources\static\file" />
       <recent name="C:\Users\Administrator\Desktop\part_job\pro\part_job_work\hosptial_entry\src\main\resources\templates\back" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\luoPe\Desktop\part_job\pro\hosptial\part_job_work\hosptial_entry\src\main\resources\templates\suggestions" />
+      <recent name="C:\Users\luoPe\Desktop\part_job\pro\hosptial\part_job_work\hosptial_entry\src\main\resources" />
+      <recent name="C:\Users\luoPe\Desktop\part_job\pro\hosptial\part_job_work\hosptial_entry\src\main\resources\templates\patients" />
+      <recent name="C:\Users\luoPe\Desktop\part_job\pro\hosptial\part_job_work\hosptial_entry\src\main\resources\templates\back" />
+      <recent name="C:\Users\luoPe\Desktop\part_job\pro\hosptial\part_job_work\hosptial_entry\src\main\resources\templates\advice" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -171,7 +172,7 @@
       <workItem from="1592534238096" duration="16516000" />
       <workItem from="1592662956176" duration="1061000" />
       <workItem from="1592876523837" duration="26299000" />
-      <workItem from="1592962736775" duration="7795000" />
+      <workItem from="1592962736775" duration="21486000" />
     </task>
     <task id="LOCAL-00001" summary="excel导出&amp;详情页修改">
       <created>1592820568065</created>
@@ -187,7 +188,14 @@
       <option name="project" value="LOCAL" />
       <updated>1592904384629</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="用药方案修改&amp;删除&amp;添加">
+      <created>1592971222279</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1592971222279</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -209,6 +217,23 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="excel导出&amp;详情页修改" />
     <MESSAGE value="详情页bug修复&amp;V值修改&amp;建议增生改查搭建" />
-    <option name="LAST_COMMIT_MESSAGE" value="详情页bug修复&amp;V值修改&amp;建议增生改查搭建" />
+    <MESSAGE value="用药方案修改&amp;删除&amp;添加" />
+    <option name="LAST_COMMIT_MESSAGE" value="用药方案修改&amp;删除&amp;添加" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/test/java/com/lck/MainTest.java</url>
+          <line>41</line>
+          <option name="timeStamp" value="12" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/lck/controllor/PatientControllor.java</url>
+          <line>498</line>
+          <option name="timeStamp" value="13" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

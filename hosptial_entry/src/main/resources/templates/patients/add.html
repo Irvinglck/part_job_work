@@ -33,380 +33,148 @@
             }
         }
 
-        .chartjs-render-monitor {
-            -webkit-animation: chartjs-render-animation 0.001s;
-            animation: chartjs-render-animation 0.001s;
+        .title-p > p {
+            display: inline-block;
         }
-        .form-group{
-            margin-right: 25px;
-            margin-bottom: 5px;
-            float: left;
+
+        .title-p .adviceDrud {
+            display: inline-block;
+            float: right;
         }
-        .form-group>label{
-            width: 90px;
+
+        .to-detail {
+            display: inline-block;
+            float: right;
         }
-        .form-inline{
-            padding-left: 10%;
-        }
-        .patient-base{
-            margin-bottom: 50px;
-            /*border-bottom: 1px solid #4e555b;*/
-        }
+
     </style>
 </head>
 
-    <body>
-        <div th:replace="~{commons/common::topbar}"></div>
+<body>
+<div th:replace="~{commons/common::topbar}"></div>
 
-        <div class="container-fluid">
-            <div class="row">
-                <div th:replace="~{commons/common::sidebar(active='list.html')}"></div>
-                <main role="main" class="col-md-9 ml-sm-auto col-lg-11 pt-3 px-4">
-                    <h3 style="color: #007BFF">患者信息录入</h3>
-                    <div class="table-responsive">
-                        <form class="form-inline patient-base" method="POST" th:action="@{/patient/addPatient}" role="form">
-                            <div class="warp">
-                                <h4>患者基本情况数据采集</h4>
-                                <div class="form-group">
-                                    <label for="number1">编号：</label>
-                                    <input type="text" class="form-control" name="number" id="number1"
-                                           placeholder="请输入编号DSXXX">
-                                </div>
-                                <div class="form-group">
-                                    <label for="username">姓名：</label>
-                                    <input type="text" class="form-control" name="username" id="username"
-                                           placeholder="请输入姓名">
-                                </div>
-                                <div class="form-group">
-                                    <label for="age">年龄：</label>
-                                    <input type="text" class="form-control" name="gender" id="age"
-                                           placeholder="请输入年龄">
-                                </div>
-                                <div class="form-group">
-                                    <label for="diaAge">糖尿病龄：</label>
-                                    <input type="text" class="form-control" name="diaAge" id="diaAge"
-                                           placeholder="糖尿病龄">
-                                </div>
-                                <div class="form-group">
-                                    <label for="opraTime">手术日期：</label>
-                                    <input type="type" name="opraTime" class="form-control" id="opraTime"
-                                           placeholder="手术日期">
-                                </div>
-                                <div class="form-group">
-                                    <label for="roomId">住院号：</label>
-                                    <input type="text" class="form-control" name="roomId" id="roomId"
-                                           placeholder="住院号">
-                                </div>
-                            </div>
-                            <div class="warp">
-                                <div class="form-group">
-                                    <label for="isDiabetes">性别：</label>
-                                    <select name="gender" class="form-control" style="width: 205px" id="gender">
-                                        <option value="男">男</option>
-                                        <option value="女">女</option>
-                                    </select>
-                                </div>
-                                <div class="form-group">
-                                    <label for="isDiabetes">糖尿病：</label>
-                                    <select name="isDiabetes" class="form-control" style="width: 205px" id="isDiabetes" >
-                                        <option value="0">是</option>
-                                        <option value="1">否</option>
-                                    </select>
-
-                                </div>
-                                <div class="form-group">
-                                    <label label="name">高血压：</label>
-                                    <select name="highBlood" class="form-control" style="width: 205px" id="highBlood">
-                                        <option value="是">是</option>
-                                        <option value="否">否</option>
-                                    </select>
-                                </div>
-                                <div class="form-group">
-                                    <label for="boolFat">血脂异常：</label>
-                                    <select name="boolFat" class="form-control" style="width: 205px" id="boolFat">
-                                        <option value="是">是</option>
-                                        <option value="否">否</option>
-                                    </select>
-                                </div>
-                                <div class="form-group">
-                                    <label for="opraType">手术方式：</label>
-                                    <select name="opraType" class="form-control" style="width: 205px" id="opraType">
-                                        <option value="RYGB">RYGB</option>
-                                        <option value="SG">SG</option>
-                                        <option value="Mini">Mini</option>
-                                    </select>
-                                </div>
-                                <div class="form-group">
-                                    <label for="reverseOpra">修正手术：</label>
-                                    <select name="reverseOpra" class="form-control" style="width: 205px" id="reverseOpra">
-                                        <option value="是">是</option>
-                                        <option value="否">否</option>
-                                    </select>
-                                </div>
-                                <div class="form-group">
-                                    <label for="isFirstOpra">首次手术：</label>
-                                    <select name="isFirstOpra" class="form-control" style="width: 205px" id="isFirstOpra">
-                                        <option value="是">是</option>
-                                        <option value="否">否</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <button type="submit" class="btn btn-sm btn-primary">提交</button>
-                        </form>
+<div class="container-fluid">
+    <div class="row">
+        <div th:replace="~{commons/common::sidebar(active='list.html')}"></div>
+        <main role="main" class="col-md-9 ml-sm-auto col-lg-11 pt-3 px-4">
+            <h3 style="color: #007BFF;padding-bottom: 15px">
+                <span style="color: #2B2B2B"></span>添加患者基本信息
+                <span class="to-detail btn btn-sm btn-primary">
+<!--                    <a style="color: white" th:href="@{/advice/advieDrug/}+${addviceDrug.number}">返回用药方案列表</a></span>-->
+                    <a style="color: white" th:href="@{/advice/advieDrug/}">返回患者列表</a></span>
+            </h3>
+            <div class="table-responsive">
+                <form th:action="@{/patient/addPatient}" method="POST">
+                    <div class="form-row" style="width: 95%">
+                        <div class="form-group col-md-6">
+                            <div>患者编号</div>
+                            <input type="text" name="number" class="form-control">
+                        </div>
+                        <div class="form-group col-md-6">
+                            <div>患者姓名</div>
+                            <input type="text" name="username" class="form-control">
+                        </div>
+                    </div>
+                    <div class="form-row" style="width: 95%">
+                        <div class="form-group col-md-6">
+                            <div>年龄</div>
+                            <input type="text" name="age" class="form-control">
+                        </div>
+                        <div class="form-group col-md-6">
+                            <div>糖尿病龄</div>
+                            <input type="text" name="diaAge" class="form-control">
+                        </div>
+                    </div>
+                    <div class="form-row" style="width: 95%">
+                        <div class="form-group col-md-6">
+                            <div>手术日期</div>
+                            <input type="text" name="opraTime" class="form-control">
+                        </div>
+                        <div class="form-group col-md-6">
+                            <div>住院号</div>
+                            <input type="text" name="roomId" class="form-control">
+                        </div>
+                    </div>
+                    <div class="form-row" style="width: 95%">
+                        <div class="form-group col-md-6">
+                            <div>性别</div>
+                            <select name="gender" class="form-control" id="gender">
+                                <option value="男">男</option>
+                                <option value="女">女</option>
+                            </select>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <div>糖尿病</div>
+                            <select name="isDiabetes" class="form-control" id="isDiabetes">
+                                <option value="是">是</option>
+                                <option value="否">否</option>
+                            </select>
+                        </div>
                     </div>
 
-                    <div class="table-responsive">
-                        <form class="form-inline" method="POST" th:action="@{/patient/addPatientDes}" role="form">
-                            <div class="warp">
-                                <h4>患者跟踪数据采集</h4>
-                                <div style="color: red">[[${msg}]]</div>
-                                <div class="form-group">
-                                    <label for="number">编号：</label>
-                                    <input type="text" class="form-control" name="number" id="number"
-                                           placeholder="编号DSXXX（重要）">
-                                </div>
-                                <div class="form-group">
-                                    <label for="followUpTimeV">探访：</label>
-                                    <input type="type" class="form-control" name="followUpTimeV" id="followUpTimeV"
-                                           placeholder="随访时间">
-                                </div>
-                                <div class="form-group">
-                                    <label for="PV">P V：</label>
-                                    <input type="type" class="form-control" name="PV" id="PV"
-                                           placeholder="PV">
-                                </div>
-                                <div class="form-group">
-                                    <label for="CaV">CaV：</label>
-                                    <input type="type" class="form-control" name="CaV" id="CaV"
-                                           placeholder="CaV">
-
-                                </div>
-                                <div class="form-group">
-                                    <label for="MgV">MgV：</label>
-                                    <input type="text" class="form-control" id="MgV" name="MgV"
-                                           placeholder="MgV">
-                                </div>
-                                <div class="form-group">
-                                    <label for="NaV">NaV：</label>
-                                    <input type="text" class="form-control" id="NaV" name="NaV"
-                                           placeholder="NaV">
-                                </div>
-                                <div class="form-group">
-                                    <label for="KV">K V：</label>
-                                    <input type="text" class="form-control" id="KV" name="KV"
-                                           placeholder="KV">
-                                </div>
-                                <div class="form-group">
-                                    <label for="PTHV">PTHV：</label>
-                                    <input type="text" class="form-control" id="PTHV" name="PTHV"
-                                           placeholder="PTHV">
-                                </div>
-                                <div class="form-group">
-                                    <label for="OH25DV">OH25DV：</label>
-                                    <input type="text" class="form-control" id="OH25DV" name="OH25DV"
-                                           placeholder="OH25DV">
-                                </div>
-                                <div class="form-group">
-                                    <label for="CRPV">CRPV：</label>
-                                    <input type="text" class="form-control" id="CRPV" name="CRPV"
-                                           placeholder="CRPV">
-                                </div>
-                                <div class="form-group">
-                                    <label for="FT3V">FT3V：</label>
-                                    <input type="text" class="form-control" id="FT3V" name="FT3V"
-                                           placeholder="FT3V">
-                                </div>
-                                <div class="form-group">
-                                    <label for="FT4V">FT4V：</label>
-                                    <input type="type" class="form-control" id="FT4V" name="FT4V"
-                                           placeholder="FT4V">
-                                </div>
-                                <div class="form-group">
-                                    <label for="TSHV">TSHV：</label>
-                                    <input type="text" class="form-control" id="TSHV" name="TSHV"
-                                           placeholder="TSHV">
-                                </div>
-                                <div class="form-group">
-                                    <label for="FFAV">FFAV：</label>
-                                    <input type="text" class="form-control" id="FFAV" name="FFAV"
-                                           placeholder="FFAV">
-                                </div>
-                                <div class="form-group">
-                                    <label for="ALPV">ALPV：</label>
-                                    <input type="text" class="form-control" id="ALPV" name="ALPV"
-                                           placeholder="ALPV">
-                                </div>
-                                <div class="form-group">
-                                    <label for="ALTV">ALTV：</label>
-                                    <input type="text" class="form-control" id="ALTV" name="ALTV"
-                                           placeholder="ALTV">
-                                </div>
-                                <div class="form-group">
-                                    <label for="ASTV">ASTV：</label>
-                                    <input type="text" class="form-control" name="ASTV" id="ASTV"
-                                           placeholder="ASTV">
-                                </div>
-                                <div class="form-group">
-                                    <label for="BUNV">BUNV：</label>
-                                    <input type="text" class="form-control" name="BUNV" id="BUNV"
-                                           placeholder="BUNV">
-                                </div>
-                                <div class="form-group">
-                                    <label for="CP0V">CP0V：</label>
-                                    <input type="text" class="form-control" name="CP0V" id="CP0V"
-                                           placeholder="CP0V">
-                                </div>
-                                <div class="form-group">
-                                    <label for="CP120V">CP120V：</label>
-                                    <input type="text" class="form-control" name="CP120V" id="CP120V"
-                                           placeholder="CP120V">
-
-                                </div>
-                                <div class="form-group">
-                                    <label for="INSOV">INSOV：</label>
-                                    <input type="text" class="form-control" id="INSOV" name="INSOV"
-                                           placeholder="INSOV">
-                                </div>
-                                <div class="form-group">
-                                    <label for="INS120V">INS120V：</label>
-                                    <input type="text" class="form-control" id="INS120V" name="INS120V"
-                                           placeholder="INS120V">
-                                </div>
-                                <div class="form-group">
-                                    <label for="ChV">ChV：</label>
-                                    <input type="text" class="form-control" id="ChV" name="ChV"
-                                           placeholder="ChV">
-                                </div>
-                                <div class="form-group">
-                                    <label for="CrV">CrV：</label>
-                                    <input type="text" class="form-control" id="CrV" name="CrV"
-                                           placeholder="CrV">
-                                </div>
-                                <div class="form-group">
-                                    <label for="FBGV">FBGV：</label>
-                                    <input type="text" class="form-control" id="FBGV" name="FBGV"
-                                           placeholder="FBGV">
-                                </div>
-                                <div class="form-group">
-                                    <label for="HDLV">HDLV：</label>
-                                    <input type="text" class="form-control" id="HDLV" name="HDLV"
-                                           placeholder="HDLV">
-                                </div>
-                                <div class="form-group">
-                                    <label for="HOMABV">HOMABV：</label>
-                                    <input type="text" class="form-control" id="HOMABV" name="HOMABV"
-                                           placeholder="HOMABV">
-                                </div>
-                                <div class="form-group">
-                                    <label for="HOMAIRV">HOMAIRV：</label>
-                                    <input type="text" class="form-control" id="HOMAIRV" name="HOMAIRV"
-                                           placeholder="HOMAIRV">
-                                </div>
-                                <div class="form-group">
-                                    <label for="HbV">HbV：</label>
-                                    <input type="text" class="form-control" id="HbV" name="HbV"
-                                           placeholder="HbV">
-                                </div>
-                                <div class="form-group">
-                                    <label for="HbA1cV">HbA1cV：</label>
-                                    <input type="text" class="form-control" id="HbA1cV" name="HbA1cV"
-                                           placeholder="HbA1cV">
-                                </div>
-                                <div class="form-group">
-                                    <label for="LDLV">LDLV：</label>
-                                    <input type="text" class="form-control" id="LDLV" name="LDLV"
-                                           placeholder="LDLV">
-                                </div>
-                                <div class="form-group">
-                                    <label for="PBGV">PBGV：</label>
-                                    <input type="text" class="form-control" id="PBGV" name="PBGV"
-                                           placeholder="PBGV">
-                                </div>
-                                <div class="form-group">
-                                    <label for="TGV">TGV：</label>
-                                    <input type="text" class="form-control" name="TGV" id="TGV"
-                                           placeholder="TGV">
-                                </div>
-                                <div class="form-group">
-                                    <label for="WBCV">WBCV：</label>
-                                    <input type="text" class="form-control" name="WBCV" id="WBCV"
-                                           placeholder="WBCV">
-                                </div>
-                                <div class="form-group">
-                                    <label for="rGTV">rGTV：</label>
-                                    <input type="text" class="form-control" name="rGTV" id="rGTV"
-                                           placeholder="rGTV">
-                                </div>
-                                <div class="form-group">
-                                    <label for="GAV">GAV：</label>
-                                    <input type="text" class="form-control" name="GAV" id="GAV"
-                                           placeholder="GAV">
-
-                                </div>
-                                <div class="form-group">
-                                    <label for="weightV">体重：</label>
-                                    <input type="text" class="form-control" id="weightV" name="weightV"
-                                           placeholder="请输入体重V">
-                                </div>
-                                <div class="form-group">
-                                    <label for="fatV">腹内脂肪：</label>
-                                    <input type="text" class="form-control" id="fatV" name="fatV"
-                                           placeholder="请输入腹内脂肪">
-                                </div>
-                                <div class="form-group">
-                                    <label for="acidV">尿酸：</label>
-                                    <input type="text" class="form-control" id="acidV" name="acidV"
-                                           placeholder="请输入尿酸V">
-                                </div>
-                                <div class="form-group">
-                                    <label for="skinFatV">皮下脂肪：</label>
-                                    <input type="text" class="form-control" id="skinFatV" name="skinFatV"
-                                           placeholder="皮下脂肪V">
-                                </div>
-                                <div class="form-group">
-                                    <label for="pressureV">收缩压：</label>
-                                    <input type="text" class="form-control" id="pressureV" name="pressureV"
-                                           placeholder="请输入收缩压V">
-                                </div>
-                                <div class="form-group">
-                                    <label for="disPressureV">舒张压：</label>
-                                    <input type="text" class="form-control" id="disPressureV" name="disPressureV"
-                                           placeholder="舒张压V">
-                                </div>
-                                <div class="form-group">
-                                    <label for="bodyIndexV">体重指数：</label>
-                                    <input type="text" class="form-control" id="bodyIndexV" name="bodyIndexV"
-                                           placeholder="体重指数V">
-                                </div>
-                                <div class="form-group">
-                                    <label for="hiplineV">臀围：</label>
-                                    <input type="text" class="form-control" id="hiplineV" name="hiplineV"
-                                           placeholder="臀围V">
-                                </div>
-                                <div class="form-group">
-                                    <label for="hipRatioV">腰臀比：</label>
-                                    <input type="text" class="form-control" id="hipRatioV" name="hipRatioV"
-                                           placeholder="腰臀比V">
-                                </div>
-                                <div class="form-group">
-                                    <label for="waistV">腰围：</label>
-                                    <input type="text" class="form-control" id="waistV" name="waistV"
-                                           placeholder="腰围V">
-                                </div>
-                            </div>
-                            <button type="submit" class="btn btn-sm btn-primary">提交</button>
-                        </form>
+                    <div class="form-row" style="width: 95%">
+                        <div class="form-group col-md-6">
+                            <div>高血压</div>
+                            <select name="highBlood" class="form-control">
+                                <option value="是">是</option>
+                                <option value="否">否</option>
+                            </select>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <div>血脂异常</div>
+                            <select name="boolFat" class="form-control">
+                                <option value="是">是</option>
+                                <option value="否">否</option>
+                            </select>
+                        </div>
                     </div>
-                </main>
+                    <div class="form-row" style="width: 95%">
+                        <div class="form-group col-md-6">
+                            <div>手术方式</div>
+                            <input type="text" class="form-control" list="tyleList" name="opraType"
+                                   placeholder="手术方式">
+                            <datalist id="tyleList">
+                                <option value="RYGB">RYGB</option>
+                                <option value="SG">SG</option>
+                                <option value="Mini">Mini</option>
+                            </datalist>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <div>修正手术</div>
+                            <select name="reverseOpra" class="form-control">
+                                <option value="是">是</option>
+                                <option value="否">否</option>
+                            </select>
+                        </div>
+                    </div>
+
+
+                    <div class="form-row" style="width: 95%">
+                        <div class="form-group col-md-6">
+                            <div>首次手术</div>
+                            <select name="isFirstOpra" class="form-control">
+                                <option value="是">是</option>
+                                <option value="否">否</option>
+                            </select>
+                        </div>
+
+                    </div>
+
+
+                    <button type="submit" class="btn btn-info">添加患者</button>
+                </form>
+                <div style="color: red">[[${msg}]]</div>
             </div>
-        </div>
-        <script type="text/javascript" th:src="@{/js/popper.min.js}"></script>
-        <script type="text/javascript" th:src="@{/js/bootstrap.min.js}"></script>
+        </main>
+    </div>
+</div>
+<script type="text/javascript" th:src="@{/js/popper.min.js}"></script>
+<script type="text/javascript" th:src="@{/js/bootstrap.min.js}"></script>
 
-        <script>
+<script>
 
-        </script>
+</script>
 
-    </body>
+</body>
 
 </html>

@@ -31,6 +31,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.*;
 import java.lang.reflect.Field;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 import java.lang.reflect.Modifier;
 import java.net.URLEncoder;
 import java.util.*;
@@ -175,6 +177,31 @@ public class PatientControllor {
         }
     }
 
+    //    //添加患者跟踪信息
+//    @PostMapping("/addPatientDes")
+//    public String addPatientDes(
+//            PatientDes patientDes,
+//            Model model
+//    ) {
+//        PatientDes des = patientDesRepository.findByNumber(patientDes.getNumber());
+//        //已经有跟踪信息的追加
+//        if (des != null) {
+//            PatientDes combineBean = combineSydwCore(des, patientDes);
+//            patientDesRepository.save(combineBean.setNumber(des.getNumber()).setId(des.getId()));
+//            model.addAttribute("msg", "追加录入跟踪数据成功");
+//            return "/patients/addDes";
+//        }//没有追踪信息的直接添加
+//        else {
+//            PatientDes save = patientDesRepository.save(patientDes);
+//            if (save != null) {
+//                model.addAttribute("msg", "添加录入跟踪数据成功");
+//                return "/patients/addDes";
+//            } else {
+//                model.addAttribute("msg", "录入跟踪数据失败,请检查患者编号");
+//                return "/patients/addDes";
+//            }
+//        }
+//    }
     //添加患者跟踪信息
     @PostMapping("/addPatientDes")
     public String addPatientDes(
@@ -182,25 +209,37 @@ public class PatientControllor {
             Model model
     ) {
         PatientDes des = patientDesRepository.findByNumber(patientDes.getNumber());
-        //已经有跟踪信息的追加
+        //追加
         if (des != null) {
-            PatientDes combineBean = combineSydwCore(des, patientDes);
-            patientDesRepository.save(combineBean.setNumber(des.getNumber()).setId(des.getId()));
-            model.addAttribute("msg", "追加录入跟踪数据成功");
-            return "/patients/add";
-        }//没有追踪信息的直接添加
+            PatientDes patientUpdate = patientDesRepository.save(patientDes);
+            model.addAttribute("msg", "添加录入跟踪数据成功");
+            return "/patients/addDes";
+        }//第一次添加
         else {
-            PatientDes save = patientDesRepository.save(patientDes);
-            if (save != null) {
-                model.addAttribute("msg", "添加录入跟踪数据成功");
-                return "/patients/add";
-            } else {
-                model.addAttribute("msg", "录入跟踪数据失败,请检查患者编号");
-                return "/patients/add";
+            assert false;
+            Field[] declaredFields = des.getClass().getDeclaredFields();
+            for (Field declaredField : declaredFields) {
+                String name = declaredField.getName();//属性名字
+                if("id".equals(name)||"number".equals(name))
+                    continue;
+                name = name.substring(0, 1).toUpperCase() + name.substring(1);//属性首字母大写
+                Method m = null;
+                try {
+                    m = model.getClass().getMethod("get" + name);
+                    String value = (String) m.invoke(model);
+                    m = model.getClass().getMethod("set"+name,String.class);
+                    //获取第一个值 然后拼接
+                    m.invoke(model, value+",,,,,,,,,,,,,,");
+                } catch (NoSuchMethodException | IllegalAccessException | InvocationTargetException e) {
+                    e.printStackTrace();
+                }
+
             }
+            patientDesRepository.save(patientDes);
+            model.addAttribute("msg", "添加录入跟踪数据成功");
+            return "/patients/addDes";
         }
     }
-
 
 
     private PatientDes combineSydwCore(PatientDes source, PatientDes target) {
@@ -265,7 +304,7 @@ public class PatientControllor {
         Map<String, Object> result = new HashMap<>();
         for (int i = 0; i < split.length; i++) {
             String[] split1 = split[i].split("=");
-            String value=split1.length<2?"":split1[1];
+            String value = split1.length < 2 ? "" : split1[1];
             result.put(split1[0].trim(), value.trim());
         }
         String number = request.getParameter("number");
@@ -275,6 +314,7 @@ public class PatientControllor {
         model.addAttribute("patient", patientRepository.findByPatientNumber(number));
         return "/patients/delEdit";
     }
+
     //数据V值修改
     @PostMapping("/editPatient")
     private String editPatient(VModel vModel, Model model) {
@@ -302,11 +342,11 @@ public class PatientControllor {
 
         try {
             //属性
-            String field =  getMappingField1(vModel.getV0())!=null?getMappingField1(vModel.getV0()):vModel.getV0();
+            String field = getMappingField1(vModel.getV0()) != null ? getMappingField1(vModel.getV0()) : vModel.getV0();
 
             Field fieldDec = patientDes.getClass().getDeclaredField(field);
             fieldDec.setAccessible(true);
-            fieldDec.set(patientDes,sb.toString());
+            fieldDec.set(patientDes, sb.toString());
 
         } catch (NoSuchFieldException | IllegalAccessException e) {
             e.printStackTrace();
@@ -315,8 +355,7 @@ public class PatientControllor {
         patientDesRepository.save(patientDes);
 
 
-
-        model.addAttribute("user",patientRepository.findByPatientNumber(vModel.getNumber()));
+        model.addAttribute("user", patientRepository.findByPatientNumber(vModel.getNumber()));
 
         List<Map<String, String>> maps = convertToMap(patientDes);
 
@@ -451,6 +490,18 @@ public class PatientControllor {
         return "/patients/filedata";
     }
 
+    //跳转添加V值页面
+    @GetMapping("/addDes/{number}")
+    private String toAddDes(
+            @PathVariable String number,
+            Model model
+    ) {
+        Patient patient = patientRepository.findByPatientNumber(number);
+        PatientDes patientDes = patientDesRepository.findByNumber(number);
+        model.addAttribute("patient", patient);
+        model.addAttribute("patientDes", patientDes);
+        return "/patients/addDes";
+    }
 
     private String createPath() {
         String filepath = "D:\\csv_export\\";
@@ -461,6 +512,7 @@ public class PatientControllor {
         String fileName = "csv_export.csv"; //  csv_export.csv
         return filepath + fileName;
     }
+
     private List<Map<String, String>> convertToMap(PatientDes patientDes) {
         Map<String, Object> stringObjectMap = convertUtil.entityToMap(patientDes);
         StringBuilder sb = new StringBuilder();
@@ -481,6 +533,7 @@ public class PatientControllor {
         }
         return ListResult;
     }
+
     private String getMappingField(String key) {
         Map<String, String> mapTable = new HashMap<>();
         mapTable.put("weightV", "体重");
