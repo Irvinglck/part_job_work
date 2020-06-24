@@ -7,6 +7,9 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/page")
 public class PageControllor {
 
+
+
+
     @GetMapping("/add")
     public String add() {
         return "/patients/filedata";

@@ -2,49 +2,18 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cd574323-8f51-4bd7-9765-51233a9d3354" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/lck/controllor/AdviceControllor.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/lck/model/VModel.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/patients/delEdit.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/suggestions/advice.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/templates/back/advice.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/suggestions/addAdvice.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/suggestions/editAdvice.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/lck/config/WebMvcConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/lck/config/WebMvcConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/lck/controllor/DoctorControllor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/lck/controllor/DoctorControllor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/lck/controllor/PatientContrllor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/lck/controllor/PatientControllor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/lck/model/AdviceDrug.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/lck/model/AdviceDrug.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/lck/model/PatientDes.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/lck/model/PatientDes.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/lck/repository/AdviceDrugRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/lck/repository/AdviceDrugRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/lck/repository/PatientDesRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/lck/repository/PatientDesRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/lck/repository/UserRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/lck/repository/UserRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/lck/util/ConvertUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/lck/util/ConvertUtil.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/patients/add_bak.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/back/add_bak.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/patients/advice.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/back/advice.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/lck/controllor/AdviceControllor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/lck/controllor/AdviceControllor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/lck/controllor/PageControllor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/lck/controllor/PageControllor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/lck/controllor/PatientControllor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/lck/controllor/PatientControllor.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/templates/patients/detail.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/patients/detail.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/patients/list.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/patients/list.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/lck/HosptialEntryApplicationTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/lck/HosptialEntryApplicationTests.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/lck/MainTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/lck/MainTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/application-dev.yml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/application-dev.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/lck/HosptialEntryApplication.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/lck/HosptialEntryApplication.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/suggestions/advice.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/suggestions/advice.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/lck/config/WebMvcConfig.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/lck/config/WebMvcConfig.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/lck/controllor/DoctorControllor.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/lck/controllor/DoctorControllor.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/lck/controllor/PatientContrllor.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/lck/model/AdviceDrug.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/lck/model/AdviceDrug.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/lck/repository/AdviceDrugRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/lck/repository/AdviceDrugRepository.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/lck/repository/PatientDesRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/lck/repository/PatientDesRepository.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/lck/repository/PatientRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/lck/repository/PatientRepository.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/lck/repository/UserRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/lck/repository/UserRepository.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/lck/util/ConvertUtil.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/lck/util/ConvertUtil.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/lck/util/FileUtils.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/lck/util/FileUtils.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/file/template.xlsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/back/template.csv" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/back/template.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/commons/common.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/commons/common.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/lck/controllor/PageControllor.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/lck/controllor/PageControllor.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/templates/patients/detail.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/patients/detail.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/patients/filedata.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/patients/filedata.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/patients/list.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/patients/list.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/com/lck/HosptialEntryApplicationTests.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/com/lck/HosptialEntryApplicationTests.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/com/lck/MainTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/com/lck/MainTest.class" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -201,7 +170,8 @@
       <workItem from="1592533542525" duration="608000" />
       <workItem from="1592534238096" duration="16516000" />
       <workItem from="1592662956176" duration="1061000" />
-      <workItem from="1592876523837" duration="26128000" />
+      <workItem from="1592876523837" duration="26299000" />
+      <workItem from="1592962736775" duration="7795000" />
     </task>
     <task id="LOCAL-00001" summary="excel导出&amp;详情页修改">
       <created>1592820568065</created>
@@ -210,7 +180,14 @@
       <option name="project" value="LOCAL" />
       <updated>1592820568065</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="详情页bug修复&amp;V值修改&amp;建议增生改查搭建">
+      <created>1592904384628</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1592904384629</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -231,6 +208,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="excel导出&amp;详情页修改" />
-    <option name="LAST_COMMIT_MESSAGE" value="excel导出&amp;详情页修改" />
+    <MESSAGE value="详情页bug修复&amp;V值修改&amp;建议增生改查搭建" />
+    <option name="LAST_COMMIT_MESSAGE" value="详情页bug修复&amp;V值修改&amp;建议增生改查搭建" />
   </component>
 </project>

@@ -255,27 +255,6 @@ public class PatientControllor {
         return "/patients/detail";
     }
 
-//    //查看用药方案
-//    @GetMapping("/advieDrug/{number}")
-//    public String adviceDrug(@PathVariable String number,
-//                             Model model) {
-//        List<AdviceDrug> adviceDrugs = adviceDrugRepository.findByNumber(number);
-//        if (CollectionUtils.isEmpty(adviceDrugs)) {
-//            Patient patient = patientRepository.findByPatientNumber(number);
-//            List<AdviceDrug> resutl = new ArrayList<>();
-//            AdviceDrug adviceDrug = new AdviceDrug().setName(patient.getUsername());
-//            resutl.add(adviceDrug);
-//            model.addAttribute("adviceDrugs", resutl);
-//            model.addAttribute("number", number);
-//            return "/patients/advice";
-//        } else {
-//            model.addAttribute("adviceDrugs", adviceDrugs);
-//            model.addAttribute("number", number);
-//            return "/patients/advice";
-//        }
-//    }
-
-
     //跳转修改页面
     @GetMapping("/toEdit")
     public String editItem(HttpServletRequest request,
@@ -286,7 +265,8 @@ public class PatientControllor {
         Map<String, Object> result = new HashMap<>();
         for (int i = 0; i < split.length; i++) {
             String[] split1 = split[i].split("=");
-            result.put(split1[0].trim(), split1[1].trim());
+            String value=split1.length<2?"":split1[1];
+            result.put(split1[0].trim(), value.trim());
         }
         String number = request.getParameter("number");
         result.put("number", number);
