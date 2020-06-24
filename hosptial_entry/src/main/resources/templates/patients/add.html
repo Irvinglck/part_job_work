@@ -45,6 +45,7 @@
         .to-detail {
             display: inline-block;
             float: right;
+            margin-right: 70px;
         }
 
     </style>
@@ -56,12 +57,12 @@
 <div class="container-fluid">
     <div class="row">
         <div th:replace="~{commons/common::sidebar(active='list.html')}"></div>
-        <main role="main" class="col-md-9 ml-sm-auto col-lg-11 pt-3 px-4">
+        <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
             <h3 style="color: #007BFF;padding-bottom: 15px">
                 <span style="color: #2B2B2B"></span>添加患者基本信息
                 <span class="to-detail btn btn-sm btn-primary">
 <!--                    <a style="color: white" th:href="@{/advice/advieDrug/}+${addviceDrug.number}">返回用药方案列表</a></span>-->
-                    <a style="color: white" th:href="@{/advice/advieDrug/}">返回患者列表</a></span>
+                    <a style="color: white" th:href="@{/patient/patients/}">返回患者列表</a></span>
             </h3>
             <div class="table-responsive">
                 <form th:action="@{/patient/addPatient}" method="POST">

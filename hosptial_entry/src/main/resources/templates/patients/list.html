@@ -51,6 +51,7 @@
         .search-form {
             float: right;
             display: inline-block;
+            margin-right: 70px;
         }
 
         .add-patient {
@@ -71,7 +72,7 @@
 <div class="container-fluid">
     <div class="row">
         <div th:replace="~{commons/common::sidebar(active='list.html')}"></div>
-        <main role="main" class="col-md-9 ml-sm-auto col-lg-11 pt-3 px-4">
+        <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
             <div class="warp">
                 <span class="add-patient"><a class="btn btn-sm btn-info"
                                              th:href="@{/page/addPatient}">添加患者</a></span>
@@ -141,7 +142,7 @@
                     <h5>当前第<span>[[${pageInfo.pageCurrent}]]</span>页,总共<span>[[${pageInfo.totalPage }]]</span>页,总<span>[[${pageInfo.totalCount }]]</span>条记录
                     </h5>
                 </div>
-                <div class="col-md-5">
+                <div class="col-md-4">
                     <select style="width: 100px">
                         <option>快速翻页</option>
 <!--                        th:each="item:${maps}"-->
@@ -149,7 +150,7 @@
                               th:text="${item.pageDes}" th:value="${item.jumpPage}"></option>
                     </select>
                 </div>
-                <div class="col-md-2">
+                <div class="col-md-3" >
                     <nav aria-label="Page navigation" class="nav-pagination">
 
                         <ul class="pagination">

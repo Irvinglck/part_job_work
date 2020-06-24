@@ -45,6 +45,7 @@
         .to-detail {
             display: inline-block;
             float: right;
+            margin-right: 70px;
         }
 
     </style>
@@ -56,7 +57,7 @@
 <div class="container-fluid">
     <div class="row">
         <div th:replace="~{commons/common::sidebar(active='list.html')}"></div>
-        <main role="main" class="col-md-9 ml-sm-auto col-lg-11 pt-3 px-4">
+        <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
             <h3 style="color: #007BFF;padding-bottom: 15px">
                 <span style="color: #2B2B2B"></span>添加患者V值
                 <span class="to-detail btn btn-sm btn-primary">
@@ -67,43 +68,43 @@
                     <div class="form-row" style="width: 95%">
                         <div class="form-group col-md-3">
                             <div>患者编号</div>
-                            <input type="text" name="number" readonly="true" th:value="${patientDes!=null?patientDes.number:''}" placeholder="DXXXX" class="form-control">
+                            <input type="text" name="number" readonly="true" th:value="${patient!=null?patient.number:''}" placeholder="DXXXX" class="form-control">
                         </div>
                         <div class="form-group col-md-3">
                             <div>探访</div>
-                            <input type="type" class="form-control" th:value="${patientDes.followUpTimeV}" name="followUpTimeV" id="followUpTimeV"
+                            <input type="type" class="form-control" th:value="${patientDes!=null?patientDes.followUpTimeV:''}" name="followUpTimeV" id="followUpTimeV"
                                    placeholder="随访时间">
                         </div>
                         <div class="form-group col-md-3">
                             <div>PV</div>
-                            <input type="type" class="form-control" th:value="${patientDes.PV}" name="PV" id="PV"
+                            <input type="type" class="form-control" th:value="${patientDes!=null?patientDes.PV:''}" name="PV" id="PV"
                                    placeholder="PV">
                         </div>
                         <div class="form-group col-md-3">
                             <div>CaV</div>
-                            <input type="type" class="form-control" th:value="${patientDes.CaV}" name="CaV" id="CaV"
+                            <input type="type" class="form-control" th:value="${patientDes!=null?patientDes.CaV:''}" name="CaV" id="CaV"
                                    placeholder="CaV">
                         </div>
                     </div>
                     <div class="form-row" style="width: 95%">
                         <div class="form-group col-md-3">
                             <div>MgV</div>
-                            <input type="text" class="form-control" th:value="${patientDes.MgV}" id="MgV" name="MgV"
+                            <input type="text" class="form-control" th:value="${patientDes!=null?patientDes.MgV:''}" id="MgV" name="MgV"
                                    placeholder="MgV">
                         </div>
                         <div class="form-group col-md-3">
                             <div>NaV</div>
-                            <input type="text" class="form-control" th:value="${patientDes.NaV}" id="NaV" name="NaV"
+                            <input type="text" class="form-control" th:value="${patientDes!=null?patientDes.NaV:''}" id="NaV" name="NaV"
                                    placeholder="NaV">
                         </div>
                         <div class="form-group col-md-3">
                             <div>KV</div>
-                            <input type="text" class="form-control" th:value="${patientDes.KV}" id="KV" name="KV"
+                            <input type="text" class="form-control" th:value="${patientDes!=null?patientDes.KV:''}" id="KV" name="KV"
                                    placeholder="KV">
                         </div>
                         <div class="form-group col-md-3">
                             <div>PTHV</div>
-                            <input type="text" class="form-control" th:value="${patientDes.PTHV}" id="PTHV" name="PTHV"
+                            <input type="text" class="form-control" th:value="${patientDes!=null?patientDes.PTHV:''}" id="PTHV" name="PTHV"
                                    placeholder="PTHV">
                         </div>
                     </div>
@@ -111,44 +112,44 @@
                     <div class="form-row" style="width: 95%">
                         <div class="form-group col-md-3">
                             <div>OH25DV</div>
-                            <input type="text" class="form-control" th:value="${patientDes.OH25DV}" id="OH25DV" name="OH25DV"
+                            <input type="text" class="form-control" th:value="${patientDes!=null?patientDes.OH25DV:''}" id="OH25DV" name="OH25DV"
                                    placeholder="OH25DV">
                         </div>
                         <div class="form-group col-md-3">
                             <div>CRPV</div>
-                            <input type="text" class="form-control" th:value="${patientDes.CRPV}" id="CRPV" name="CRPV"
+                            <input type="text" class="form-control" th:value="${patientDes!=null?patientDes.CRPV:''}" id="CRPV" name="CRPV"
                                    placeholder="CRPV">
                         </div>
                         <div class="form-group col-md-3">
                             <div>FT3V</div>
-                            <input type="text" class="form-control" th:value="${patientDes.FT3V}" id="FT3V" name="FT3V"
+                            <input type="text" class="form-control" th:value="${patientDes!=null?patientDes.FT3V:''}" id="FT3V" name="FT3V"
                                    placeholder="FT3V">
                         </div>
                         <div class="form-group col-md-3">
                             <div>FT4V</div>
-                            <input type="type" class="form-control" th:value="${patientDes.FT4V}" id="FT4V" name="FT4V"
+                            <input type="type" class="form-control" th:value="${patientDes!=null?patientDes.FT4V:''}" id="FT4V" name="FT4V"
                                    placeholder="FT4V">
                         </div>
                     </div>
                     <div class="form-row" style="width: 95%">
                         <div class="form-group col-md-3">
                             <div>TSHV</div>
-                            <input type="text" class="form-control" th:value="${patientDes.TSHV}" id="TSHV" name="TSHV"
+                            <input type="text" class="form-control" th:value="${patientDes!=null?patientDes.TSHV:''}" id="TSHV" name="TSHV"
                                    placeholder="TSHV">
                         </div>
                         <div class="form-group col-md-3">
                             <div>ALPV</div>
-                            <input type="text" class="form-control" th:value="${patientDes.ALPV}" id="ALPV" name="ALPV"
+                            <input type="text" class="form-control" th:value="${patientDes!=null?patientDes.ALPV:''}" id="ALPV" name="ALPV"
                                    placeholder="ALPV">
                         </div>
                         <div class="form-group col-md-3">
                             <div>ASTV</div>
-                            <input type="text" class="form-control" th:value="${patientDes.ASTV}" name="ASTV" id="ASTV"
+                            <input type="text" class="form-control" th:value="${patientDes!=null?patientDes.ASTV:''}" name="ASTV" id="ASTV"
                                    placeholder="ASTV">
                         </div>
                         <div class="form-group col-md-3">
                             <div>BUNV</div>
-                            <input type="text" class="form-control" th:value="${patientDes.BUNV}" name="BUNV" id="BUNV"
+                            <input type="text" class="form-control" th:value="${patientDes!=null?patientDes.BUNV:''}" name="BUNV" id="BUNV"
                                    placeholder="BUNV">
                         </div>
                     </div>
@@ -156,44 +157,44 @@
                     <div class="form-row" style="width: 95%">
                         <div class="form-group col-md-3">
                             <div>CP0V</div>
-                            <input type="text" class="form-control" th:value="${patientDes.CP0V}" name="CP0V" id="CP0V"
+                            <input type="text" class="form-control" th:value="${patientDes!=null?patientDes.CP0V:''}" name="CP0V" id="CP0V"
                                    placeholder="CP0V">
                         </div>
                         <div class="form-group col-md-3">
                             <div>CP120V</div>
-                            <input type="text" class="form-control" th:value="${patientDes.CP120V}"  name="CP120V" id="CP120V"
+                            <input type="text" class="form-control" th:value="${patientDes!=null?patientDes.CP120V:''}"  name="CP120V" id="CP120V"
                                    placeholder="CP120V">
                         </div>
                         <div class="form-group col-md-3">
                             <div>INSOV</div>
-                            <input type="text" class="form-control" th:value="${patientDes.INSOV}" id="INSOV" name="INSOV"
+                            <input type="text" class="form-control" th:value="${patientDes!=null?patientDes.INSOV:''}" id="INSOV" name="INSOV"
                                    placeholder="INSOV">
                         </div>
                         <div class="form-group col-md-3">
                             <div>INS120V</div>
-                            <input type="text" class="form-control"  th:value="${patientDes.INS120V}" id="INS120V" name="INS120V"
+                            <input type="text" class="form-control"  th:value="${patientDes!=null?patientDes.INS120V:''}" id="INS120V" name="INS120V"
                                    placeholder="INS120V">
                         </div>
                     </div>
                     <div class="form-row" style="width: 95%">
                         <div class="form-group col-md-3">
                             <div>ChV</div>
-                            <input type="text" class="form-control" th:value="${patientDes.ChV}" id="ChV" name="ChV"
+                            <input type="text" class="form-control" th:value="${patientDes!=null?patientDes.ChV:''}" id="ChV" name="ChV"
                                    placeholder="ChV">
                         </div>
                         <div class="form-group col-md-3">
                             <div>CrV</div>
-                            <input type="text" class="form-control" th:value="${patientDes.CrV}" id="CrV" name="CrV"
+                            <input type="text" class="form-control" th:value="${patientDes!=null?patientDes.CrV:''}" id="CrV" name="CrV"
                                    placeholder="CrV">
                         </div>
                         <div class="form-group col-md-3">
                             <div>FBGV</div>
-                            <input type="text" class="form-control" th:value="${patientDes.FBGV}" id="FBGV" name="FBGV"
+                            <input type="text" class="form-control" th:value="${patientDes!=null?patientDes.FBGV:''}" id="FBGV" name="FBGV"
                                    placeholder="FBGV">
                         </div>
                         <div class="form-group col-md-3">
                             <div>HDLV</div>
-                            <input type="text" class="form-control" th:value="${patientDes.HDLV}" id="HDLV" name="HDLV"
+                            <input type="text" class="form-control" th:value="${patientDes!=null?patientDes.HDLV:''}" id="HDLV" name="HDLV"
                                    placeholder="HDLV">
                         </div>
                     </div>
@@ -201,44 +202,44 @@
                     <div class="form-row" style="width: 95%">
                         <div class="form-group col-md-3">
                             <div>HOMABV</div>
-                            <input type="text" class="form-control" th:value="${patientDes.HOMABV}" id="HOMABV" name="HOMABV"
+                            <input type="text" class="form-control" th:value="${patientDes!=null?patientDes.HOMABV:''}" id="HOMABV" name="HOMABV"
                                    placeholder="HOMABV">
                         </div>
                         <div class="form-group col-md-3">
                             <div>HOMAIRV</div>
-                            <input type="text" class="form-control" th:value="${patientDes.HOMAIRV}" id="HOMAIRV" name="HOMAIRV"
+                            <input type="text" class="form-control" th:value="${patientDes!=null?patientDes.HOMAIRV:''}" id="HOMAIRV" name="HOMAIRV"
                                    placeholder="HOMAIRV">
                         </div>
                         <div class="form-group col-md-3">
                             <div>HbV</div>
-                            <input type="text" class="form-control" th:value="${patientDes.HbV}"  id="HbV" name="HbV"
+                            <input type="text" class="form-control" th:value="${patientDes!=null?patientDes.HbV:''}"  id="HbV" name="HbV"
                                    placeholder="HbV">
                         </div>
                         <div class="form-group col-md-3">
                             <div>HbA1cV</div>
-                            <input type="text" class="form-control" th:value="${patientDes.HbA1cV}" id="HbA1cV" name="HbA1cV"
+                            <input type="text" class="form-control" th:value="${patientDes!=null?patientDes.HbA1cV:''}" id="HbA1cV" name="HbA1cV"
                                    placeholder="HbA1cV">
                         </div>
                     </div>
                     <div class="form-row" style="width: 95%">
                         <div class="form-group col-md-3">
                             <div>LDLV</div>
-                            <input type="text" class="form-control" th:value="${patientDes.LDLV}" id="LDLV" name="LDLV"
+                            <input type="text" class="form-control" th:value="${patientDes!=null?patientDes.LDLV:''}" id="LDLV" name="LDLV"
                                    placeholder="LDLV">
                         </div>
                         <div class="form-group col-md-3">
                             <div>PBGV</div>
-                            <input type="text" class="form-control" th:value="${patientDes.PBGV}" id="PBGV" name="PBGV"
+                            <input type="text" class="form-control" th:value="${patientDes!=null?patientDes.PBGV:''}" id="PBGV" name="PBGV"
                                    placeholder="PBGV">
                         </div>
                         <div class="form-group col-md-3">
                             <div>TGV</div>
-                            <input type="text" class="form-control" th:value="${patientDes.TGV}" name="TGV" id="TGV"
+                            <input type="text" class="form-control" th:value="${patientDes!=null?patientDes.TGV:''}" name="TGV" id="TGV"
                                    placeholder="TGV">
                         </div>
                         <div class="form-group col-md-3">
                             <div>WBCV</div>
-                            <input type="text" class="form-control" th:value="${patientDes.WBCV}" name="WBCV" id="WBCV"
+                            <input type="text" class="form-control" th:value="${patientDes!=null?patientDes.WBCV:''}" name="WBCV" id="WBCV"
                                    placeholder="WBCV">
                         </div>
                     </div>
@@ -246,66 +247,66 @@
                     <div class="form-row" style="width: 95%">
                         <div class="form-group col-md-3">
                             <div>rGTV</div>
-                            <input type="text" class="form-control" th:value="${patientDes.rGTV}" name="rGTV" id="rGTV"
+                            <input type="text" class="form-control" th:value="${patientDes!=null?patientDes.rGTV:''}" name="rGTV" id="rGTV"
                                    placeholder="rGTV">
                         </div>
                         <div class="form-group col-md-3">
                             <div>GAV</div>
-                            <input type="text" class="form-control" th:value="${patientDes.GAV}" name="GAV" id="GAV"
+                            <input type="text" class="form-control" th:value="${patientDes!=null?patientDes.GAV:''}" name="GAV" id="GAV"
                                    placeholder="GAV">
                         </div>
                         <div class="form-group col-md-3">
                             <div>体重</div>
-                            <input type="text" class="form-control" th:value="${patientDes.weightV}" id="weightV" name="weightV"
+                            <input type="text" class="form-control" th:value="${patientDes!=null?patientDes.weightV:''}" id="weightV" name="weightV"
                                    placeholder="请输入体重V">
                         </div>
                         <div class="form-group col-md-3">
                             <div>腹内脂肪</div>
-                            <input type="text" class="form-control" th:value="${patientDes.fatV}" id="fatV" name="fatV"
+                            <input type="text" class="form-control" th:value="${patientDes!=null?patientDes.fatV:''}" id="fatV" name="fatV"
                                    placeholder="请输入腹内脂肪">
                         </div>
                     </div>
                     <div class="form-row" style="width: 95%">
                         <div class="form-group col-md-3">
                             <div>尿酸</div>
-                            <input type="text" class="form-control" th:value="${patientDes.acidV}" id="acidV" name="acidV"
+                            <input type="text" class="form-control" th:value="${patientDes!=null?patientDes.acidV:''}" id="acidV" name="acidV"
                                    placeholder="请输入尿酸V">
                         </div>
                         <div class="form-group col-md-3">
                             <div>皮下脂肪</div>
-                            <input type="text" class="form-control" th:value="${patientDes.skinFatV}" id="skinFatV" name="skinFatV"
+                            <input type="text" class="form-control" th:value="${patientDes!=null?patientDes.skinFatV:''}" id="skinFatV" name="skinFatV"
                                    placeholder="皮下脂肪V">
                         </div>
                         <div class="form-group col-md-3">
                             <div>收缩压</div>
-                            <input type="text" class="form-control" th:value="${patientDes.pressureV}" id="pressureV" name="pressureV"
+                            <input type="text" class="form-control" th:value="${patientDes!=null?patientDes.pressureV:''}" id="pressureV" name="pressureV"
                                    placeholder="请输入收缩压V">
                         </div>
                         <div class="form-group col-md-3">
                             <div>舒张压</div>
-                            <input type="text" class="form-control" id="disPressureV" th:value="${patientDes.disPressureV}" name="disPressureV"
+                            <input type="text" class="form-control" id="disPressureV" th:value="${patientDes!=null?patientDes.disPressureV:''}" name="disPressureV"
                                    placeholder="舒张压V">
                         </div>
                     </div>
                     <div class="form-row" style="width: 95%">
                         <div class="form-group col-md-3">
                             <div>体重指数</div>
-                            <input type="text" class="form-control" id="bodyIndexV" th:value="${patientDes.bodyIndexV}" name="bodyIndexV"
+                            <input type="text" class="form-control" id="bodyIndexV" th:value="${patientDes!=null?patientDes.bodyIndexV:''}" name="bodyIndexV"
                                    placeholder="体重指数V">
                         </div>
                         <div class="form-group col-md-3">
                             <div>臀围</div>
-                            <input type="text" class="form-control" id="hiplineV"  th:value="${patientDes.hiplineV}" name="hiplineV"
+                            <input type="text" class="form-control" id="hiplineV"  th:value="${patientDes!=null?patientDes.hiplineV:''}" name="hiplineV"
                                    placeholder="臀围V">
                         </div>
                         <div class="form-group col-md-3">
                             <div>腰臀比</div>
-                            <input type="text" class="form-control" id="hipRatioV" th:value="${patientDes.hipRatioV}" name="hipRatioV"
+                            <input type="text" class="form-control" id="hipRatioV" th:value="${patientDes!=null?patientDes.hipRatioV:''}" name="hipRatioV"
                                    placeholder="腰臀比V">
                         </div>
                         <div class="form-group col-md-3">
                             <div>腰围</div>
-                            <input type="text" class="form-control" id="waistV" th:value="${patientDes.waistV}" name="waistV"
+                            <input type="text" class="form-control" id="waistV" th:value="${patientDes!=null?patientDes.waistV:''}" name="waistV"
                                    placeholder="腰围V">
                         </div>
                     </div>
@@ -313,11 +314,11 @@
                     <div class="form-row" style="width: 95%">
                         <div class="form-group col-md-3">
                             <div>FFAV</div>
-                            <input type="text" name="FFAV" placeholder="FFAV"  th:value="${patientDes.FFAV}" class="form-control">
+                            <input type="text" name="FFAV" placeholder="FFAV"  th:value="${patientDes!=null?patientDes.FFAV:''}" class="form-control">
                         </div>
                         <div class="form-group col-md-3">
                             <div>ALTV</div>
-                            <input type="text" name="ALTV" placeholder="ALTV" th:value="${patientDes.ALTV}" class="form-control">
+                            <input type="text" name="ALTV" placeholder="ALTV" th:value="${patientDes!=null?patientDes.ALTV:''}" class="form-control">
                         </div>
                     </div>
                     <button type="submit" class="btn btn-info">添加患者</button>

@@ -65,7 +65,7 @@ public class PatientControllor {
     public String login(
             @RequestParam(name = "username", required = false) String name,
             @RequestParam(name = "pageCurrent", required = false, defaultValue = "1") Integer pageCurrent,
-            @RequestParam(name = "pageSize", required = false, defaultValue = "3") Integer pageSize,
+            @RequestParam(name = "pageSize", required = false, defaultValue = "20") Integer pageSize,
             Model model
     ) {
         Page<Patient> patientList = findByPageAndParams(name, pageCurrent, pageSize);
@@ -112,7 +112,7 @@ public class PatientControllor {
     public String findByName(
             @RequestParam(name = "username") String name,
             @RequestParam(name = "pageCurrent", required = false, defaultValue = "1") Integer pageCurrent,
-            @RequestParam(name = "pageSize", required = false, defaultValue = "3") Integer pageSize,
+            @RequestParam(name = "pageSize", required = false, defaultValue = "20") Integer pageSize,
             Model model
     ) {
         Page<Patient> patientList = findByPageAndParams(name, pageCurrent, pageSize);
@@ -136,10 +136,10 @@ public class PatientControllor {
         patientRepository.deleteById(id);
         patientDesRepository.delPatientDes(patient.getNumber());
 //        model.addAttribute("patients", patientRepository.findAll());
-        Page<Patient> patientList = findByPageAndParams(null, 1, 3);
+        Page<Patient> patientList = findByPageAndParams(null, 1, 20);
         model.addAttribute("patients", patientList.getContent());
         model.addAttribute("pageInfo",
-                new PageInfo<>().setPageCurrent(1).setPageSize(3)
+                new PageInfo<>().setPageCurrent(1).setPageSize(20)
                         .setTotalCount((int) patientList.getTotalElements())
                         .setTotalPage(patientList.getTotalPages())
                         .setQuickMap(createMap(patientList.getTotalPages())));
@@ -163,10 +163,10 @@ public class PatientControllor {
     ) {
         Patient save = patientRepository.save(patient);
         if (save != null) {
-            Page<Patient> patientList = findByPageAndParams(null, 1, 3);
+            Page<Patient> patientList = findByPageAndParams(null, 1, 20);
             model.addAttribute("patients", patientList.getContent());
             model.addAttribute("pageInfo",
-                    new PageInfo<>().setPageCurrent(1).setPageSize(3)
+                    new PageInfo<>().setPageCurrent(1).setPageSize(20)
                             .setTotalCount((int) patientList.getTotalElements())
                             .setTotalPage(patientList.getTotalPages())
                             .setQuickMap(createMap(patientList.getTotalPages())));
@@ -216,8 +216,7 @@ public class PatientControllor {
             return "/patients/addDes";
         }//第一次添加
         else {
-            assert false;
-            Field[] declaredFields = des.getClass().getDeclaredFields();
+            Field[] declaredFields = patientDes.getClass().getDeclaredFields();
             for (Field declaredField : declaredFields) {
                 String name = declaredField.getName();//属性名字
                 if("id".equals(name)||"number".equals(name))
@@ -225,11 +224,11 @@ public class PatientControllor {
                 name = name.substring(0, 1).toUpperCase() + name.substring(1);//属性首字母大写
                 Method m = null;
                 try {
-                    m = model.getClass().getMethod("get" + name);
-                    String value = (String) m.invoke(model);
-                    m = model.getClass().getMethod("set"+name,String.class);
+                    m = patientDes.getClass().getMethod("get" + name);
+                    String value = (String) m.invoke(patientDes);
+                    m = patientDes.getClass().getMethod("set"+name,String.class);
                     //获取第一个值 然后拼接
-                    m.invoke(model, value+",,,,,,,,,,,,,,");
+                    m.invoke(patientDes, value+",0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00");
                 } catch (NoSuchMethodException | IllegalAccessException | InvocationTargetException e) {
                     e.printStackTrace();
                 }

@@ -89,6 +89,7 @@ public class AdviceControllor {
         AdviceDrug one = adviceDrugRepository.getOne(id);
         adviceDrugRepository.deleteById(id);
         model.addAttribute("adviceDrugs",adviceDrugRepository.findByNumber(one.getNumber()));
+        model.addAttribute("number",one.getNumber());
         model.addAttribute("adviceDrug",one);
         return "/suggestions/advice";
     }
