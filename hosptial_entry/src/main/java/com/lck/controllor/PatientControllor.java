@@ -204,10 +204,10 @@ public class PatientControllor {
                 String value = (String) m.invoke(patientDes);
                 m = patientDes.getClass().getMethod("set" + name, String.class);
                 if (StringUtils.isEmpty(value)) {
-                    m.invoke(patientDes, "@V1,@V2,@V3,@V4,@V5,@V6,@V7,@V8,@V9,@V10,@V11,@V12,@V13,@V14,@V15");
+                    m.invoke(patientDes, "@V1,@V2,@V3,@V4,@V5,@V6,@V7,@V8,@V9,@VD10,@VD11,@VD12,@VD13,@VD14,@VD15");
                 } else {
                     //获取第一个值 然后拼接
-                    m.invoke(patientDes, value + ",@V2,@V3,@V4,@V5,@V6,@V7,@V8,@V9,@V10,@V11,@V12,@V13,@V14,@V15");
+                    m.invoke(patientDes, value + ",@V2,@V3,@V4,@V5,@V6,@V7,@V8,@V9,@VD10,@VD11,@VD12,@VD13,@VD14,@VD15");
                 }
             } catch (NoSuchMethodException | IllegalAccessException | InvocationTargetException e) {
                 e.printStackTrace();
