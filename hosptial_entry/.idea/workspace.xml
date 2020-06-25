@@ -112,7 +112,7 @@
       <updated>1592999764406</updated>
       <workItem from="1592999766946" duration="7885000" />
       <workItem from="1593011481213" duration="374000" />
-      <workItem from="1593047089855" duration="10820000" />
+      <workItem from="1593047089855" duration="11510000" />
     </task>
     <task id="LOCAL-00001" summary="2.0上线">
       <created>1593011652018</created>
@@ -128,7 +128,14 @@
       <option name="project" value="LOCAL" />
       <updated>1593061131917</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="批量修改V值bug">
+      <created>1593070665011</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1593070665011</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -150,6 +157,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="2.0上线" />
     <MESSAGE value="V值批量添加" />
-    <option name="LAST_COMMIT_MESSAGE" value="V值批量添加" />
+    <MESSAGE value="批量修改V值bug" />
+    <option name="LAST_COMMIT_MESSAGE" value="批量修改V值bug" />
   </component>
 </project>

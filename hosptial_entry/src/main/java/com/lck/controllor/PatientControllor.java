@@ -187,9 +187,8 @@ public class PatientControllor {
         //跟踪信息不为空，跳转批量修改页面
         PatientDes des = patientDesRepository.findByNumber(patientDes.getNumber());
         if (des != null) {
-            Patient patient = patientRepository.findByPatientNumber(patientDes.getNumber());
-            model.addAttribute("patient", patient);
-            return "/patients/addEditDes";
+            model.addAttribute("msg", "该患者V值信息已存在,请勿重复添加");
+            return "/patients/addDes";
         }
         //第一次添加
         Field[] declaredFields = patientDes.getClass().getDeclaredFields();
