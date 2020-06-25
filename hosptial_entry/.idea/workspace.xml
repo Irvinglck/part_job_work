@@ -2,23 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0fbeca7f-ddaf-4e43-b603-841300b19f04" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/$PRODUCT_WORKSPACE_FILE$" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/$PRODUCT_WORKSPACE_FILE$" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/patients/addEditDes.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/uiDesigner.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/lck/controllor/AdviceControllor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/lck/controllor/AdviceControllor.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/lck/controllor/PatientControllor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/lck/controllor/PatientControllor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/application-dev.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application-dev.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/patients/add.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/patients/add.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/patients/addDes.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/patients/addDes.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/patients/delEdit.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/patients/delEdit.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/templates/patients/detail.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/patients/detail.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/patients/filedata.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/patients/filedata.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/patients/list.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/patients/list.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/suggestions/addAdvice.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/suggestions/addAdvice.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/suggestions/advice.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/suggestions/advice.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/suggestions/editAdvice.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/suggestions/editAdvice.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/lck/MainTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/lck/MainTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/application-dev.yml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/application-dev.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/lck/config/WebMvcConfig.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/lck/config/WebMvcConfig.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/lck/controllor/PageControllor.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/lck/controllor/PageControllor.class" afterDir="false" />
@@ -37,6 +26,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Class" />
+        <option value="HTML File" />
       </list>
     </option>
   </component>
@@ -58,6 +48,7 @@
     <ConfirmationsSetting value="2" id="Add" />
   </component>
   <component name="PropertiesComponent">
+    <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="RequestMappingsPanelOrder0" value="0" />
     <property name="RequestMappingsPanelOrder1" value="1" />
     <property name="RequestMappingsPanelWidth0" value="75" />
@@ -84,7 +75,20 @@
       </list>
     </option>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Spring Boot.HosptialEntryApplication">
+    <configuration name="MainTest" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.lck.MainTest" />
+      <module name="hosptial_entry" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.lck.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="HosptialEntryApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
       <module name="hosptial_entry" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="com.lck.HosptialEntryApplication" />
@@ -92,6 +96,11 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.MainTest" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SvnConfiguration">
     <configuration />
@@ -104,7 +113,17 @@
       <option name="presentableId" value="Default" />
       <updated>1592999764406</updated>
       <workItem from="1592999766946" duration="7885000" />
+      <workItem from="1593011481213" duration="374000" />
+      <workItem from="1593047089855" duration="9997000" />
     </task>
+    <task id="LOCAL-00001" summary="2.0上线">
+      <created>1593011652018</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1593011652018</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -115,21 +134,16 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
           </value>
         </entry>
       </map>
     </option>
   </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/lck/controllor/PatientControllor.java</url>
-          <line>497</line>
-          <option name="timeStamp" value="4" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="2.0上线" />
+    <option name="LAST_COMMIT_MESSAGE" value="2.0上线" />
   </component>
 </project>

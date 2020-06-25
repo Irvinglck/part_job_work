@@ -177,74 +177,72 @@ public class PatientControllor {
         }
     }
 
-    //    //添加患者跟踪信息
-//    @PostMapping("/addPatientDes")
-//    public String addPatientDes(
-//            PatientDes patientDes,
-//            Model model
-//    ) {
-//        PatientDes des = patientDesRepository.findByNumber(patientDes.getNumber());
-//        //已经有跟踪信息的追加
-//        if (des != null) {
-//            PatientDes combineBean = combineSydwCore(des, patientDes);
-//            patientDesRepository.save(combineBean.setNumber(des.getNumber()).setId(des.getId()));
-//            model.addAttribute("msg", "追加录入跟踪数据成功");
-//            return "/patients/addDes";
-//        }//没有追踪信息的直接添加
-//        else {
-//            PatientDes save = patientDesRepository.save(patientDes);
-//            if (save != null) {
-//                model.addAttribute("msg", "添加录入跟踪数据成功");
-//                return "/patients/addDes";
-//            } else {
-//                model.addAttribute("msg", "录入跟踪数据失败,请检查患者编号");
-//                return "/patients/addDes";
-//            }
-//        }
-//    }
+
     //添加患者跟踪信息
     @PostMapping("/addPatientDes")
     public String addPatientDes(
             PatientDes patientDes,
             Model model
     ) {
+        //跟踪信息不为空，跳转批量修改页面
         PatientDes des = patientDesRepository.findByNumber(patientDes.getNumber());
-        //追加
         if (des != null) {
-            PatientDes patientUpdate = patientDesRepository.save(patientDes);
-            model.addAttribute("msg", "添加录入跟踪数据成功");
-            return "/patients/addDes";
-        }//第一次添加
-        else {
-            Field[] declaredFields = patientDes.getClass().getDeclaredFields();
-            for (Field declaredField : declaredFields) {
-                String name = declaredField.getName();//属性名字
-                if("id".equals(name)||"number".equals(name))
-                    continue;
-                name = name.substring(0, 1).toUpperCase() + name.substring(1);//属性首字母大写
-                Method m = null;
-                try {
-                    m = patientDes.getClass().getMethod("get" + name);
-                    String value = (String) m.invoke(patientDes);
-                    m = patientDes.getClass().getMethod("set"+name,String.class);
-                    //获取第一个值 然后拼接
-                    m.invoke(patientDes, value+",0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00");
-                } catch (NoSuchMethodException | IllegalAccessException | InvocationTargetException e) {
-                    e.printStackTrace();
-                }
-
-            }
-            patientDesRepository.save(patientDes);
-            model.addAttribute("msg", "添加录入跟踪数据成功");
-            return "/patients/addDes";
+            Patient patient = patientRepository.findByPatientNumber(patientDes.getNumber());
+            model.addAttribute("patient", patient);
+            return "/patients/addEditDes";
         }
+        //第一次添加
+        Field[] declaredFields = patientDes.getClass().getDeclaredFields();
+        for (Field declaredField : declaredFields) {
+            String name = declaredField.getName();//属性名字
+            if ("id".equals(name) || "number".equals(name))
+                continue;
+            name = name.substring(0, 1).toUpperCase() + name.substring(1);//属性首字母大写
+            Method m = null;
+            try {
+                m = patientDes.getClass().getMethod("get" + name);
+                String value = (String) m.invoke(patientDes);
+                m = patientDes.getClass().getMethod("set" + name, String.class);
+                if (StringUtils.isEmpty(value)) {
+                    m.invoke(patientDes, "@V1,@V2,@V3,@V4,@V5,@V6,@V7,@V8,@V9,@V10,@V11,@V12,@V13,@V14,@V15");
+                } else {
+                    //获取第一个值 然后拼接
+                    m.invoke(patientDes, value + ",@V2,@V3,@V4,@V5,@V6,@V7,@V8,@V9,@V10,@V11,@V12,@V13,@V14,@V15");
+                }
+            } catch (NoSuchMethodException | IllegalAccessException | InvocationTargetException e) {
+                e.printStackTrace();
+            }
+        }
+        patientDesRepository.save(patientDes);
+        model.addAttribute("msg", "添加录入跟踪数据成功");
+        return "/patients/addDes";
+    }
+
+    @PostMapping("/addEditPatientDes")
+    public String addEditPatientDes(
+            PatientDes patientDes,
+            HttpServletRequest request,
+            Model model
+    ) {
+        String vValue = request.getParameter("V");
+        //获取模板值
+        PatientDes targetPatient = patientDesRepository.findByNumber(patientDes.getNumber());
+        //替换模板操作
+        PatientDes patientDes1 = combineSydwCore(patientDes, targetPatient, vValue);
+        PatientDes save = patientDesRepository.save(patientDes1);
+        //返回详情页
+        List<Map<String, String>> maps = convertToMap(save);
+
+        model.addAttribute("maps", maps);
+        model.addAttribute("user", patientRepository.findByPatientNumber(patientDes.getNumber()));
+        return "/patients/detail";
     }
 
 
-    private PatientDes combineSydwCore(PatientDes source, PatientDes target) {
+    private PatientDes combineSydwCore(PatientDes source, PatientDes target, String regex) {
         Class sourceBeanClass = source.getClass();
         Class targetBeanClass = target.getClass();
-
+        String tar="@"+regex;
         Field[] sourceFields = sourceBeanClass.getDeclaredFields();
         Field[] targetFields = targetBeanClass.getDeclaredFields();
         for (int i = 0; i < sourceFields.length; i++) {
@@ -256,13 +254,22 @@ public class PatientControllor {
             if (Modifier.isStatic(targetField.getModifiers())) {
                 continue;
             }
-            if (targetField.getName().equals("id"))
+            if (targetField.getName().equals("id") || targetField.getName().equals("number"))
                 continue;
             sourceField.setAccessible(true);
             targetField.setAccessible(true);
             try {
                 if (!(sourceField.get(source) == null) && !"serialVersionUID".equals(sourceField.getName().toString())) {
-                    targetField.set(target, sourceField.get(source) + "" + targetField.get(target));
+                    //俩个bean组合
+                    //targetField.set(target, sourceField.get(source) + "" + targetField.get(target));
+                    if(StringUtils.isEmpty(sourceField.get(source).toString())){
+                        targetField
+                                .set(target, targetField.get(target));
+                    }else{
+                        targetField
+                                .set(target, targetField.get(target).toString().replaceAll(tar,sourceField.get(source).toString()));
+                    }
+
                 }
             } catch (IllegalArgumentException | IllegalAccessException e) {
                 e.printStackTrace();
@@ -489,17 +496,22 @@ public class PatientControllor {
         return "/patients/filedata";
     }
 
-    //跳转添加V值页面
+    //跳转添加V值页面||跳转V值批量修改界面
     @GetMapping("/addDes/{number}")
     private String toAddDes(
             @PathVariable String number,
             Model model
     ) {
         Patient patient = patientRepository.findByPatientNumber(number);
-        PatientDes patientDes = patientDesRepository.findByNumber(number);
         model.addAttribute("patient", patient);
-        model.addAttribute("patientDes", patientDes);
-        return "/patients/addDes";
+        PatientDes patientDes = patientDesRepository.findByNumber(number);
+        ;
+        if (patientDes == null) {
+//            model.addAttribute("patientDes", patientDes);
+            return "/patients/addDes";
+        } else {
+            return "/patients/addEditDes";
+        }
     }
 
     private String createPath() {

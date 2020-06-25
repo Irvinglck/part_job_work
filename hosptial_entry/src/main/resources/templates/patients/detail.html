@@ -87,7 +87,8 @@
                             </thead>
                             <tbody>
                                 <tr th:each="item:${maps}">
-                                    <td th:each="entry: ${item}" th:text="${entry.value}"></td>
+<!--                                    <td th:each="entry: ${item}" th:text="${entry.value}"></td>-->
+                                    <td th:each="entry: ${item}" th:text="${#strings.startsWith(entry.value,'@V')?'':entry.value}"></td>
                                     <td><a th:href="@{/patient/toEdit(number=${user.getNumber()},params=${item})}" class="bt btn-sm btn-info">修改</a></td>
                                 </tr>
                             </tbody>
