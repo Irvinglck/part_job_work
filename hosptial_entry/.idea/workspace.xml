@@ -3,8 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="0fbeca7f-ddaf-4e43-b603-841300b19f04" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/lck/controllor/PatientControllor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/lck/controllor/PatientControllor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/patients/addEditDes.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/patients/addEditDes.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/suggestions/advice.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/suggestions/advice.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/com/lck/MainTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/lck/MainTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/application-dev.yml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/application-dev.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/lck/config/WebMvcConfig.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/lck/config/WebMvcConfig.class" afterDir="false" />
@@ -112,7 +111,8 @@
       <updated>1592999764406</updated>
       <workItem from="1592999766946" duration="7885000" />
       <workItem from="1593011481213" duration="374000" />
-      <workItem from="1593047089855" duration="11510000" />
+      <workItem from="1593047089855" duration="12108000" />
+      <workItem from="1593260114663" duration="708000" />
     </task>
     <task id="LOCAL-00001" summary="2.0上线">
       <created>1593011652018</created>
@@ -135,7 +135,14 @@
       <option name="project" value="LOCAL" />
       <updated>1593070665011</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="lck">
+      <created>1593071257019</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1593071257019</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -158,6 +165,7 @@
     <MESSAGE value="2.0上线" />
     <MESSAGE value="V值批量添加" />
     <MESSAGE value="批量修改V值bug" />
-    <option name="LAST_COMMIT_MESSAGE" value="批量修改V值bug" />
+    <MESSAGE value="lck" />
+    <option name="LAST_COMMIT_MESSAGE" value="lck" />
   </component>
 </project>

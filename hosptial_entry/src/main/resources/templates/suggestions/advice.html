@@ -84,8 +84,8 @@
                         <td th:text="${item.getRegulatingDrugsQuaType()}"></td>
                         <td th:text="${item.getElseDrugs()}"></td>
                         <td th:text="${item.getDes()}"></td>
-                        <td>
-                            <a class="btn btn-sm btn-primary" th:href="@{/advice/toEditAdvicePage/}+${item.getId()}">修改</a>
+                        <td th:style="${display: item==null?'none':'block'}">
+                            <a class="btn btn-sm btn-primary"  th:href="@{/advice/toEditAdvicePage/}+${item.getId()}">修改</a>
                             <a class="btn btn-sm btn-danger" th:href="@{/advice/delAdvice/}+${item.getId()}">删除</a>
                         </td>
                     </tr>

@@ -36,62 +36,11 @@ public class MainTest {
     }
 
     public static void main(String[] args) {
-
-        PatientDes model=new PatientDes();
-
-        Field[] field = model.getClass().getDeclaredFields(); // 获取实体类的所有属性，返回Field数组
-        try {
-            for (int j = 0; j < field.length; j++) { // 遍历所有属性
-                String name = field[j].getName(); // 获取属性的名字
-                name = name.substring(0, 1).toUpperCase() + name.substring(1); // 将属性的首字符大写，方便构造get，set方法
-                String type = field[j].getGenericType().toString(); // 获取属性的类型
-                if (type.equals("class java.lang.String")) { // 如果type是类类型，则前面包含"class "，后面跟类名
-                    Method m = model.getClass().getMethod("get" + name);
-                    String value = (String) m.invoke(model); // 调用getter方法获取属性值
-                    if (value == null) {
-                        m = model.getClass().getMethod("set"+name,String.class);
-                        m.invoke(model, "");
-                    }
-                }
-                if (type.equals("class java.lang.Integer")) {
-                    Method m = model.getClass().getMethod("get" + name);
-                    Integer value = (Integer) m.invoke(model);
-                    if (value == null) {
-                        m = model.getClass().getMethod("set"+name,Integer.class);
-                        m.invoke(model, 0);
-                    }
-                }
-                if (type.equals("class java.lang.Boolean")) {
-                    Method m = model.getClass().getMethod("get" + name);
-                    Boolean value = (Boolean) m.invoke(model);
-                    if (value == null) {
-                        m = model.getClass().getMethod("set"+name,Boolean.class);
-                        m.invoke(model, false);
-                    }
-                }
-                if (type.equals("class java.util.Date")) {
-                    Method m = model.getClass().getMethod("get" + name);
-                    Date value = (Date) m.invoke(model);
-                    if (value == null) {
-                        m = model.getClass().getMethod("set"+name,Date.class);
-                        m.invoke(model, new Date());
-                    }
-                }// 如果有需要,可以仿照上面继续进行扩充,再增加对其它类型的判断
-            }
-        } catch (NoSuchMethodException e) {
-            e.printStackTrace();
-        } catch (SecurityException e) {
-            e.printStackTrace();
-        } catch (IllegalAccessException e) {
-            e.printStackTrace();
-        } catch (IllegalArgumentException e) {
-            e.printStackTrace();
-        } catch (InvocationTargetException e) {
-            e.printStackTrace();
-        }
-
+        String str="@V12";
+        String target="flkasdkfja0@V12fadas";
+        String kkk = target.replaceAll(str, "kkk");
+        System.out.println(kkk);
     }
-
 
    String[] str= {"编号", "姓名", "性别", "年龄", "糖尿病", "糖尿病病程", "高血压", "血脂异常", "手术方式", "修正手术", "手术日期", "住院号", "随访时间V", "PV", "CaV", "MgV", "NaV", "KV", "PTHV", "OH25DV", "CRPV", "FT3V", "FT4V", "TSHV", "FFAV", "ALPV", "ALTV", "ASTV", "BUNV", "CP0V", "CP120V", "INS0V", "INS120V", "ChV", "CrV", "FBGV", "HDLV", "HOMABV", "HOMAIRV", "HbV", "HbA1cV", "LDLV", "PBGV", "TGV", "WBCV", "rGTV", "GAV", "体重V", "腹内脂肪V", "尿酸V", "皮下脂肪V", "收缩压V", "舒张压V", "体重指数V", "臀围V", "腰臀比V", "腰围V"};
 
