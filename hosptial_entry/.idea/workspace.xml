@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="0fbeca7f-ddaf-4e43-b603-841300b19f04" name="Default Changelist" comment="">
+    <list default="true" id="cd574323-8f51-4bd7-9765-51233a9d3354" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/lck/controllor/AdviceControllor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/lck/controllor/AdviceControllor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/lck/controllor/PatientControllor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/lck/controllor/PatientControllor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application-dev.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application-dev.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/templates/suggestions/advice.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/suggestions/advice.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/lck/MainTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/lck/MainTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/application-dev.yml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/application-dev.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/lck/config/WebMvcConfig.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/lck/config/WebMvcConfig.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/lck/controllor/PageControllor.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/lck/controllor/PageControllor.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/templates/patients/detail.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/patients/detail.html" afterDir="false" />

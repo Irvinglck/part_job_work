@@ -212,9 +212,13 @@ public class PatientControllor {
                 e.printStackTrace();
             }
         }
-        patientDesRepository.save(patientDes);
-        model.addAttribute("msg", "添加录入跟踪数据成功");
-        return "/patients/addDes";
+        PatientDes save = patientDesRepository.save(patientDes);
+        //返回详情页
+        List<Map<String, String>> maps = convertToMap(save);
+
+        model.addAttribute("maps", maps);
+        model.addAttribute("user", patientRepository.findByPatientNumber(patientDes.getNumber()));
+        return "/patients/detail";
     }
 
     @PostMapping("/addEditPatientDes")

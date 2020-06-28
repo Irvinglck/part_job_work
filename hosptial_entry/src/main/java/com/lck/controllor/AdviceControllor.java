@@ -37,7 +37,7 @@ public class AdviceControllor {
             List<AdviceDrug> resutl = new ArrayList<>();
             AdviceDrug adviceDrug = new AdviceDrug().setName(patient.getUsername());
             resutl.add(adviceDrug);
-            model.addAttribute("adviceDrugs", resutl);
+//            model.addAttribute("adviceDrugs", resutl);
             model.addAttribute("adviceDrug",resutl.get(0));
             model.addAttribute("number", number);
             return "/suggestions/advice";

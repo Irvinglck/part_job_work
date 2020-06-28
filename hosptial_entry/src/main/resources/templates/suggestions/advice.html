@@ -76,7 +76,7 @@
                     </tr>
                     </thead>
                     <tbody>
-                    <tr th:each="item: ${adviceDrugs}">
+                    <tr  th:each="item: ${adviceDrugs}">
                         <td th:text="${item.getMethod()}"></td>
                         <td th:text="${item.getInsulinQuaType()}"></td>
                         <td th:text="${item.getMouthDrugQuaType()}"></td>
@@ -84,7 +84,8 @@
                         <td th:text="${item.getRegulatingDrugsQuaType()}"></td>
                         <td th:text="${item.getElseDrugs()}"></td>
                         <td th:text="${item.getDes()}"></td>
-                        <td th:style="${display: item==null?'none':'block'}">
+                        <td>
+<!--                        <td th:style="'display:' + ${adviceDrugs} ? 'none' : 'inline-block'">-->
                             <a class="btn btn-sm btn-primary"  th:href="@{/advice/toEditAdvicePage/}+${item.getId()}">修改</a>
                             <a class="btn btn-sm btn-danger" th:href="@{/advice/delAdvice/}+${item.getId()}">删除</a>
                         </td>
