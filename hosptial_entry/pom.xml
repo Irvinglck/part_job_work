@@ -11,7 +11,7 @@
     <groupId>com.lck</groupId>
     <artifactId>hosptial_entry</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <packaging>war</packaging>
+    <packaging>jar</packaging>
     <name>hosptial_entry</name>
     <description>Demo project for Spring Boot</description>
 

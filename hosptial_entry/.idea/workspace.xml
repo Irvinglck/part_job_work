@@ -1,16 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="cd574323-8f51-4bd7-9765-51233a9d3354" name="Default Changelist" comment="">
+    <list default="true" id="cd574323-8f51-4bd7-9765-51233a9d3354" name="Default Changelist" comment="用药方案页面bugs修复">
+      <change afterPath="$PROJECT_DIR$/src/test/java/com/lck/SnowflakeIdWorker.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/lck/controllor/AdviceControllor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/lck/controllor/AdviceControllor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/lck/controllor/PatientControllor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/lck/controllor/PatientControllor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/application-dev.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application-dev.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/patients/add.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/patients/add.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/patients/addDes.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/patients/addDes.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/patients/addEditDes.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/patients/addEditDes.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/patients/delEdit.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/patients/delEdit.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/patients/detail.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/patients/detail.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/patients/filedata.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/patients/filedata.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/patients/list.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/patients/list.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/suggestions/addAdvice.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/suggestions/addAdvice.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/templates/suggestions/advice.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/suggestions/advice.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/suggestions/editAdvice.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/suggestions/editAdvice.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/lck/MainTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/lck/MainTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/lck/config/WebMvcConfig.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/lck/config/WebMvcConfig.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/lck/controllor/PageControllor.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/lck/controllor/PageControllor.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/templates/patients/detail.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/patients/detail.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/patients/filedata.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/patients/filedata.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/templates/patients/list.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/patients/list.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/test-classes/com/lck/MainTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/com/lck/MainTest.class" afterDir="false" />
     </list>
@@ -23,8 +31,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Class" />
         <option value="HTML File" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -105,7 +113,7 @@
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="0fbeca7f-ddaf-4e43-b603-841300b19f04" name="Default Changelist" comment="" />
+      <changelist id="cd574323-8f51-4bd7-9765-51233a9d3354" name="Default Changelist" comment="" />
       <created>1592999764406</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
@@ -114,6 +122,13 @@
       <workItem from="1593011481213" duration="374000" />
       <workItem from="1593047089855" duration="12108000" />
       <workItem from="1593260114663" duration="708000" />
+      <workItem from="1593327399368" duration="25000" />
+      <workItem from="1593329348735" duration="1484000" />
+      <workItem from="1593484877469" duration="1349000" />
+      <workItem from="1593570840913" duration="6162000" />
+      <workItem from="1593656610524" duration="53000" />
+      <workItem from="1594782803655" duration="240000" />
+      <workItem from="1594983599538" duration="908000" />
     </task>
     <task id="LOCAL-00001" summary="2.0上线">
       <created>1593011652018</created>
@@ -143,7 +158,14 @@
       <option name="project" value="LOCAL" />
       <updated>1593071257019</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="用药方案页面bugs修复">
+      <created>1593324066799</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1593324066800</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -167,6 +189,7 @@
     <MESSAGE value="V值批量添加" />
     <MESSAGE value="批量修改V值bug" />
     <MESSAGE value="lck" />
-    <option name="LAST_COMMIT_MESSAGE" value="lck" />
+    <MESSAGE value="用药方案页面bugs修复" />
+    <option name="LAST_COMMIT_MESSAGE" value="用药方案页面bugs修复" />
   </component>
 </project>
