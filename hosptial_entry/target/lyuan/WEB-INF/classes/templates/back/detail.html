@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<!-- saved from url=(0052)http://getbootstrap.com/docs/4.0/examples/dashboard/ -->
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>上海九院患者管理后台</title>
+    <!-- Bootstrap core CSS -->
+    <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet">
+    <!-- Custom styles for this template -->
+    <link th:href="@{/css/dashboard.css}" rel="stylesheet">
+    <style type="text/css">
+        /* Chart.js */
+        @-webkit-keyframes chartjs-render-animation {
+            from {
+                opacity: 0.99
+            }
+            to {
+                opacity: 1
+            }
+        }
+
+        @keyframes chartjs-render-animation {
+            from {
+                opacity: 0.99
+            }
+            to {
+                opacity: 1
+            }
+        }
+
+        .chartjs-render-monitor {
+            -webkit-animation: chartjs-render-animation 0.001s;
+            animation: chartjs-render-animation 0.001s;
+        }
+    </style>
+</head>
+
+    <body>
+        <div th:replace="~{commons/common::topbar}"></div>
+
+        <div class="container-fluid">
+            <div class="row">
+                <div th:replace="~{commons/common::sidebar(active='list.html')}"></div>
+                <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
+                    <h3 style="color: #007BFF">患者列表</h3>
+                    <div class="table-responsive">
+                        <table class="table table-striped table-sm">
+                            <thead>
+                            <tr>
+                                <th>姓名</th>
+                                <th>随访时间</th>
+                                <th>PV</th>
+                                <th>CaV</th>
+                                <th>MgV</th>
+                                <th>NaV</th>
+                                <th>KV</th>
+                                <th>PTHV</th>
+                                <th>OH25DV</th>
+                                <th>CRPV</th>
+                                <th>FT3V</th>
+                                <th>FT4V</th>
+                                <th>TSHV</th>
+                                <th>FFAV</th>
+
+                                <th>ALPV</th>
+                                <th>ALTV</th>
+                                <th>ASTV</th>
+
+                                <th>BUNV</th>
+
+                                <th>CP0V</th>
+
+                                <th>CP120V</th>
+
+                                <th>INSOV</th>
+
+                                <th>INS120V</th>
+
+                                <th>ChV</th>
+
+                                <th>CrV</th>
+
+                                <th>FBGV</th>
+
+                                <th>HDLV</th>
+
+                                <th>HOMABV</th>
+
+                                <th>HOMAIRV</th>
+
+                                <th>HbV</th>
+                                <th>HbA1cV</th>
+                                <th>LDLV</th>
+
+                                <th>PBGV</th>
+
+                                <th>TGV</th>
+
+                                <th>WBCV</th>
+                                <th>rGTV</th>
+
+                                <th>GAV</th>
+                                <th>体重V</th>
+                                <th>腹内脂肪V</th>
+                                <th>尿酸V</th>
+                                <th>皮下脂肪V</th>
+                                <th>收缩压V</th>
+                                <th>舒张压V</th>
+                                <th>体重指数V</th>
+                                <th>臀围V</th>
+                                <th>腰臀比V</th>
+                                <th>腰围V</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+
+                            </tbody>
+                        </table>
+                    </div>
+
+                </main>
+            </div>
+        </div>
+
+        <!-- Bootstrap core JavaScript
+        ================================================== -->
+        <!-- Placed at the end of the document so the pages load faster -->
+        <!-- Placed at the end of the document so the pages load faster -->
+        <script type="text/javascript" th:src="@{/js/jquery-3.2.1.slim.min.js}"></script>
+        <script type="text/javascript" th:src="@{/js/popper.min.js}"></script>
+        <script type="text/javascript" th:src="@{/js/bootstrap.min.js}"></script>
+
+        <!-- Icons -->
+        <script type="text/javascript" th:src="@{/js/feather.min.js}"></script>
+        <script>
+            feather.replace()
+        </script>
+
+        <!-- Graphs -->
+        <!--<script type="text/javascript" src="../../static/js/Chart.min.js"></script>-->
+        <script type="text/javascript" th:src="@{/js/Chart.min.js}"></script>
+        <script>
+
+        </script>
+
+    </body>
+
+</html>

@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<!-- saved from url=(0052)http://getbootstrap.com/docs/4.0/examples/dashboard/ -->
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>上海六院患者管理后台</title>
+    <!-- Bootstrap core CSS -->
+    <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet">
+    <!-- Custom styles for this template -->
+    <link th:href="@{/css/dashboard.css}" rel="stylesheet">
+    <style type="text/css">
+        /* Chart.js */
+        @-webkit-keyframes chartjs-render-animation {
+            from {
+                opacity: 0.99
+            }
+            to {
+                opacity: 1
+            }
+        }
+
+        @keyframes chartjs-render-animation {
+            from {
+                opacity: 0.99
+            }
+            to {
+                opacity: 1
+            }
+        }
+
+        .title-p > p {
+            display: inline-block;
+        }
+
+        .title-p .adviceDrud {
+            display: inline-block;
+            float: right;
+        }
+
+        .to-detail {
+            display: inline-block;
+            float: right;
+            margin-right: 70px;
+        }
+
+    </style>
+</head>
+
+<body>
+<div th:replace="~{commons/common::topbar}"></div>
+
+<div class="container-fluid">
+    <div class="row">
+        <div th:replace="~{commons/common::sidebar(active='list.html')}"></div>
+        <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
+            <h3 style="color: #007BFF;padding-bottom: 15px">
+                <span style="color: #2B2B2B"></span>添加患者基本信息
+                <span class="to-detail btn btn-sm btn-primary">
+<!--                    <a style="color: white" th:href="@{/advice/advieDrug/}+${addviceDrug.number}">返回用药方案列表</a></span>-->
+                    <a style="color: white" th:href="@{/patient/patients/}">返回患者列表</a></span>
+            </h3>
+            <div class="table-responsive">
+                <form th:action="@{/patient/addPatient}" method="POST">
+                    <div class="form-row" style="width: 95%">
+                        <div class="form-group col-md-6">
+                            <div>患者编号</div>
+                            <input type="text" name="number" class="form-control">
+                        </div>
+                        <div class="form-group col-md-6">
+                            <div>患者姓名</div>
+                            <input type="text" name="username" class="form-control">
+                        </div>
+                    </div>
+                    <div class="form-row" style="width: 95%">
+                        <div class="form-group col-md-6">
+                            <div>年龄</div>
+                            <input type="text" name="age" class="form-control">
+                        </div>
+                        <div class="form-group col-md-6">
+                            <div>糖尿病龄</div>
+                            <input type="text" name="diaAge" class="form-control">
+                        </div>
+                    </div>
+                    <div class="form-row" style="width: 95%">
+                        <div class="form-group col-md-6">
+                            <div>手术日期</div>
+                            <input type="text" name="opraTime" class="form-control">
+                        </div>
+                        <div class="form-group col-md-6">
+                            <div>住院号</div>
+                            <input type="text" name="roomId" class="form-control">
+                        </div>
+                    </div>
+                    <div class="form-row" style="width: 95%">
+                        <div class="form-group col-md-6">
+                            <div>性别</div>
+                            <select name="gender" class="form-control" id="gender">
+                                <option value="男">男</option>
+                                <option value="女">女</option>
+                            </select>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <div>糖尿病</div>
+                            <select name="isDiabetes" class="form-control" id="isDiabetes">
+                                <option value="是">是</option>
+                                <option value="否">否</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-row" style="width: 95%">
+                        <div class="form-group col-md-6">
+                            <div>高血压</div>
+                            <select name="highBlood" class="form-control">
+                                <option value="是">是</option>
+                                <option value="否">否</option>
+                            </select>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <div>血脂异常</div>
+                            <select name="boolFat" class="form-control">
+                                <option value="是">是</option>
+                                <option value="否">否</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-row" style="width: 95%">
+                        <div class="form-group col-md-6">
+                            <div>手术方式</div>
+                            <input type="text" class="form-control" list="tyleList" name="opraType"
+                                   placeholder="手术方式">
+                            <datalist id="tyleList">
+                                <option value="RYGB">RYGB</option>
+                                <option value="SG">SG</option>
+                                <option value="Mini">Mini</option>
+                            </datalist>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <div>修正手术</div>
+                            <select name="reverseOpra" class="form-control">
+                                <option value="是">是</option>
+                                <option value="否">否</option>
+                            </select>
+                        </div>
+                    </div>
+
+
+                    <div class="form-row" style="width: 95%">
+                        <div class="form-group col-md-6">
+                            <div>首次手术</div>
+                            <select name="isFirstOpra" class="form-control">
+                                <option value="是">是</option>
+                                <option value="否">否</option>
+                            </select>
+                        </div>
+
+                    </div>
+
+
+                    <button type="submit" class="btn btn-info">添加患者</button>
+                </form>
+                <div style="color: red">[[${msg}]]</div>
+            </div>
+        </main>
+    </div>
+</div>
+<script type="text/javascript" th:src="@{/js/popper.min.js}"></script>
+<script type="text/javascript" th:src="@{/js/bootstrap.min.js}"></script>
+
+<script>
+
+</script>
+
+</body>
+
+</html>
