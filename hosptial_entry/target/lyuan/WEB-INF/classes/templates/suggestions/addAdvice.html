@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<!-- saved from url=(0052)http://getbootstrap.com/docs/4.0/examples/dashboard/ -->
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>上海六院患者管理后台</title>
+    <!-- Bootstrap core CSS -->
+    <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet">
+    <!-- Custom styles for this template -->
+    <link th:href="@{/css/dashboard.css}" rel="stylesheet">
+    <style type="text/css">
+        /* Chart.js */
+        @-webkit-keyframes chartjs-render-animation {
+            from {
+                opacity: 0.99
+            }
+            to {
+                opacity: 1
+            }
+        }
+
+        @keyframes chartjs-render-animation {
+            from {
+                opacity: 0.99
+            }
+            to {
+                opacity: 1
+            }
+        }
+
+        .title-p > p {
+            display: inline-block;
+        }
+
+        .title-p .adviceDrud {
+            display: inline-block;
+            float: right;
+        }
+
+        .to-detail {
+            display: inline-block;
+            float: right;
+            margin-right: 70px;
+        }
+
+    </style>
+</head>
+
+<body>
+<div th:replace="~{commons/common::topbar}"></div>
+
+<div class="container-fluid">
+    <div class="row">
+        <div th:replace="~{commons/common::sidebar(active='list.html')}"></div>
+        <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
+            <h3 style="color: #007BFF;padding-bottom: 15px">
+                <span style="color: #2B2B2B"></span>用药方案
+                <span class="to-detail btn btn-sm btn-primary">
+                    <a style="color: white" th:href="@{/advice/advieDrug/}+${addviceDrug.number}">返回用药方案列表</a></span>
+            </h3>
+            <div class="table-responsive">
+                <form th:action="@{/advice/addAdvice}" method="POST">
+                    <div class="form-row" style="width: 95%">
+                        <div class="form-group col-md-6">
+                            <div>患者编号</div>
+                            <input type="text" name="number" readonly="true" th:value="${addviceDrug.number}" class="form-control">
+                        </div>
+                        <div class="form-group col-md-6">
+                            <div>患者姓名</div>
+                            <input type="text" name="name" readonly="true" th:value="${addviceDrug.name}" class="form-control">
+                        </div>
+                    </div>
+                    <div class="form-row" style="width: 95%">
+                        <div class="form-group col-md-6">
+                            <div>V值(1-15)</div>
+                            <input type="text" name="method" class="form-control">
+                        </div>
+                        <div class="form-group col-md-6">
+                            <div>胰岛素类（数量/种类）</div>
+                            <input type="text" name="InsulinQuaType" class="form-control">
+                        </div>
+                    </div>
+                    <div class="form-row" style="width: 95%">
+                        <div class="form-group col-md-6">
+                            <div>口服降糖药类（数量/种类）</div>
+                            <input type="text" name="mouthDrugQuaType" class="form-control">
+                        </div>
+                        <div class="form-group col-md-6">
+                            <div>降压药（数量/种类）</div>
+                            <input type="text" name="downBloodQuaType" class="form-control">
+                        </div>
+                    </div>
+                    <div class="form-row" style="width: 95%">
+                        <div class="form-group col-md-6">
+                            <div>调脂类药（数量/种类）</div>
+                            <input type="text" name="regulatingDrugsQuaType" class="form-control">
+                        </div>
+                        <div class="form-group col-md-6">
+                            <div>其它药物</div>
+                            <input type="text" name="elseDrugs" class="form-control">
+                        </div>
+                    </div>
+                    <div class="form-row" style="width: 95%">
+                        <div class="form-group col-md-6">
+                            <div>备注说明</div>
+                            <input type="text" name="des" class="form-control">
+                        </div>
+
+                    </div>
+
+                    <button type="submit" class="btn btn-info">添加用药方案</button>
+                </form>
+                <div style="color: red">[[${msg}]]</div>
+            </div>
+        </main>
+    </div>
+</div>
+<script type="text/javascript" th:src="@{/js/popper.min.js}"></script>
+<script type="text/javascript" th:src="@{/js/bootstrap.min.js}"></script>
+
+<script>
+
+</script>
+
+</body>
+
+</html>
